@@ -359,6 +359,62 @@
         .divider { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
         .divider-line { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
 
+        /* ============================ TEARDOWN MODAL ============================ */
+        body.modal-open { overflow: hidden; }
+        .modal-overlay {
+            position: fixed; inset: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: center; padding: 24px;
+            background: rgba(6, 6, 8, 0.6);
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), visibility 0.4s;
+        }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        .modal-panel {
+            position: relative; width: 100%; max-width: 540px;
+            max-height: calc(100vh - 48px); overflow-y: auto;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 24px; padding: 44px 40px 38px;
+            box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04), 0 0 90px var(--accent-glow);
+            transform: translateY(24px) scale(0.985);
+            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        .modal-overlay.open .modal-panel { transform: none; }
+        .modal-close {
+            position: absolute; top: 16px; right: 16px;
+            width: 38px; height: 38px; border-radius: 50%;
+            background: var(--elevated); border: 1px solid var(--border);
+            color: var(--text-2); font-size: 20px; line-height: 1; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: color 0.25s, border-color 0.25s, transform 0.35s; z-index: 2;
+        }
+        .modal-close:hover { color: var(--text); border-color: var(--text-3); transform: rotate(90deg); }
+        .modal-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--green); background: var(--green-soft);
+            padding: 7px 16px; border-radius: 100px; margin-bottom: 20px;
+        }
+        .modal-title { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+        .modal-title em { font-style: italic; color: var(--accent); }
+        .modal-sub { font-size: 15px; color: var(--text-2); line-height: 1.7; margin-bottom: 26px; }
+        .modal-form-mount { min-height: 40px; }
+        .modal-form-mount iframe { width: 100%; border: 0; background: transparent; }
+        .modal-fallback .ff-row { display: flex; flex-direction: column; gap: 12px; }
+        .modal-fallback .btn { width: 100%; justify-content: center; }
+        .modal-note { font-size: 13px; color: var(--text-3); margin-top: 18px; text-align: center; line-height: 1.6; }
+        .modal-note a { color: var(--accent); }
+        @media (max-width: 600px) {
+            .modal-overlay { padding: 14px; }
+            .modal-panel { padding: 40px 22px 26px; border-radius: 20px; }
+            .modal-title { font-size: 23px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .modal-overlay, .modal-panel, .modal-close { transition: none; }
+            .modal-close:hover { transform: none; }
+        }
+
         /* ============================ RESPONSIVE ============================ */
         @media (max-width: 960px) {
             .hero-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -416,7 +472,7 @@
             <a href="#approach">Approach</a>
             <a href="#work">Work</a>
             <a href="#proof">Proof</a>
-            <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown" class="nav-cta">Book a teardown</a>
+            <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown" class="nav-cta" data-teardown>Book a teardown</a>
         </div>
     </div>
 </nav>
@@ -441,7 +497,7 @@
                 </p>
 
                 <div class="hero-ctas reveal rd3">
-                    <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown&amp;body=Hi%20Mohit%2C%20here%27s%20a%20quick%20look%20at%20my%20business%20and%20where%20I%20think%20we%27re%20losing%20time%3A%0A%0A" class="btn btn-primary">Book a free operations teardown &rarr;</a>
+                    <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown&amp;body=Hi%20Mohit%2C%20here%27s%20a%20quick%20look%20at%20my%20business%20and%20where%20I%20think%20we%27re%20losing%20time%3A%0A%0A" class="btn btn-primary" data-teardown>Book a free operations teardown &rarr;</a>
                     <a href="#work" class="btn btn-ghost">See the outcomes</a>
                 </div>
 
@@ -506,7 +562,7 @@
         </div>
 
         <div class="offer-cta-row reveal">
-            <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown" class="btn btn-primary">Book your free teardown &rarr;</a>
+            <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown" class="btn btn-primary" data-teardown>Book your free teardown &rarr;</a>
         </div>
     </section>
 
@@ -901,7 +957,7 @@
             <!-- NICHE-HOOK: once the niche is set, name their specific pain here (e.g. "where your front desk loses a day a week"). -->
             <p>Book a free operations teardown&mdash;20&ndash;30 minutes, no cost, no pitch. You&rsquo;ll leave knowing exactly where your business is losing time, and what it&rsquo;d take to win it back.</p>
             <div class="cta-buttons">
-                <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown&amp;body=Hi%20Mohit%2C%20here%27s%20a%20quick%20look%20at%20my%20business%20and%20where%20I%20think%20we%27re%20losing%20time%3A%0A%0A" class="btn btn-primary">Book a free operations teardown &rarr;</a>
+                <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown&amp;body=Hi%20Mohit%2C%20here%27s%20a%20quick%20look%20at%20my%20business%20and%20where%20I%20think%20we%27re%20losing%20time%3A%0A%0A" class="btn btn-primary" data-teardown>Book a free operations teardown &rarr;</a>
                 <a href="https://linkedin.com/in/mohittaneja1" target="_blank" rel="noopener" class="btn btn-ghost">Connect on LinkedIn</a>
             </div>
             <p class="cta-micro">Prefer email? <a href="mailto:taneja.mohit2002.mn@gmail.com" style="color:var(--accent);">taneja.mohit2002.mn@gmail.com</a></p>
@@ -918,6 +974,17 @@
         </div>
     </footer>
 
+</div>
+
+<!-- ======== TEARDOWN MODAL (blurred popup + Tally form) ======== -->
+<div class="modal-overlay" id="teardown-modal" role="dialog" aria-modal="true" aria-labelledby="teardown-title" aria-hidden="true">
+    <div class="modal-panel">
+        <button class="modal-close" id="teardown-close" type="button" aria-label="Close">&times;</button>
+        <div class="modal-eyebrow"><span class="status-dot"></span> Free &middot; 20&ndash;30 min &middot; No pitch</div>
+        <h2 class="modal-title serif" id="teardown-title">Book your free <em>operations teardown</em></h2>
+        <p class="modal-sub">Tell me a bit about your business and where it hurts. I&rsquo;ll come to the call already knowing where I think you&rsquo;re losing time&mdash;and what it&rsquo;d take to win it back.</p>
+        <div class="modal-form-mount" id="teardown-form-mount" aria-live="polite"></div>
+    </div>
 </div>
 
 <script>
@@ -1123,6 +1190,97 @@
         });
     });
 
+})();
+</script>
+
+<script>
+(function() {
+    // ============================================================
+    // TEARDOWN MODAL  (blurred popup + embedded Tally form)
+    // ------------------------------------------------------------
+    // TO CONNECT YOUR TALLY FORM: paste the form ID below. It's the
+    // code at the end of your form's share link:
+    //   https://tally.so/r/wgABC1   ->   TALLY_FORM_ID = "wgABC1"
+    // Until it's set, the popup shows a tidy email fallback instead.
+    // ============================================================
+    var TALLY_FORM_ID = "";
+    var EMAIL = "taneja.mohit2002.mn@gmail.com";
+
+    var modal = document.getElementById('teardown-modal');
+    var mount = document.getElementById('teardown-form-mount');
+    var closeBtn = document.getElementById('teardown-close');
+    if (!modal || !mount || !closeBtn) return;
+
+    var lastFocus = null;
+    var formBuilt = false;
+
+    function buildForm() {
+        if (formBuilt) return;
+        formBuilt = true;
+        var id = (TALLY_FORM_ID || '').trim();
+        if (id) {
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('data-tally-src',
+                'https://tally.so/embed/' + id + '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1');
+            iframe.setAttribute('loading', 'lazy');
+            iframe.setAttribute('title', 'Book a free operations teardown');
+            iframe.style.width = '100%';
+            iframe.style.height = '340px';
+            mount.appendChild(iframe);
+            loadTally();
+        } else {
+            var mailto = 'mailto:' + EMAIL + '?subject=Free%20Operations%20Teardown'
+                + '&body=' + encodeURIComponent(
+                    "Hi Mohit, here's my business and where I think we're losing time:\n\n"
+                    + "Name:\nBusiness / website:\nPhone or WhatsApp:\nWhere we're losing the most time:\n");
+            mount.innerHTML =
+                '<div class="modal-fallback"><div class="ff-row">'
+                + '<a href="' + mailto + '" class="btn btn-primary">Email me the details &rarr;</a>'
+                + '</div><p class="modal-note">A quick booking form is being connected here. '
+                + 'For now, the button above opens a pre-filled email.</p></div>';
+        }
+    }
+
+    function loadTally() {
+        if (window.Tally && window.Tally.loadEmbeds) { window.Tally.loadEmbeds(); return; }
+        var existing = document.querySelector('script[src="https://tally.so/widgets/embed.js"]');
+        function fallbackSrc() {
+            var frames = document.querySelectorAll('iframe[data-tally-src]');
+            for (var i = 0; i < frames.length; i++) {
+                if (!frames[i].src) frames[i].src = frames[i].getAttribute('data-tally-src');
+            }
+        }
+        if (existing) { existing.addEventListener('load', function(){ window.Tally && window.Tally.loadEmbeds(); }); return; }
+        var s = document.createElement('script');
+        s.src = 'https://tally.so/widgets/embed.js';
+        s.onload = function() { window.Tally ? window.Tally.loadEmbeds() : fallbackSrc(); };
+        s.onerror = fallbackSrc;
+        document.body.appendChild(s);
+    }
+
+    function openModal(e) {
+        if (e) e.preventDefault();
+        lastFocus = document.activeElement;
+        buildForm();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        setTimeout(function(){ closeBtn.focus(); }, 60);
+    }
+    function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    var triggers = document.querySelectorAll('[data-teardown]');
+    for (var i = 0; i < triggers.length; i++) triggers[i].addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) {
+        if ((e.key === 'Escape' || e.key === 'Esc') && modal.classList.contains('open')) closeModal();
+    });
 })();
 </script>
 
