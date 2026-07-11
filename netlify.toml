@@ -2,6 +2,15 @@
   publish = "."
 
 # Static site — no build step needed.
+
+# Outcome-based portfolio, served at a clean /outcome URL.
+# (Must come before the catch-all: redirect rules match top-to-bottom.)
+[[redirects]]
+  from = "/outcome"
+  to = "/outcome.html"
+  status = 200
+
+# Catch-all: any other path serves the main (job) portfolio.
 [[redirects]]
   from = "/*"
   to = "/index.html"

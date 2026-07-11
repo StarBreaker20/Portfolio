@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit Taneja — I build systems that give your business its time back</title>
+    <meta name="description" content="I find where your business is losing hours to manual work — and build the automation, internal tools, and data systems that fix it. Book a free operations teardown.">
+
+    <!--
+      ============================================================
+      OUTCOME-BASED PORTFOLIO  (buyer-facing / non-technical owners)
+      Sister page to index.html (the capability-led job portfolio).
+      Same design system, animations and deployment. Different job:
+      this page SELLS OUTCOMES, not code.
+
+      NICHE:  This copy is intentionally niche-agnostic ("operations-
+      heavy businesses"). Every line that would sharpen once a single
+      niche + pain hook is chosen is tagged with an inline
+      "NICHE-HOOK" comment. To do the sharpening pass later, just
+      search this file for  NICHE-HOOK  and tighten each flagged line.
+      ============================================================
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <style>
+        :root {
+            --bg: #08080a;
+            --surface: #111114;
+            --elevated: #1a1a1e;
+            --glass: rgba(17, 17, 20, 0.65);
+            --text: #f2f0ec;
+            --text-2: #b0ada7;
+            --text-3: #6e6b66;
+            --border: #222226;
+            --accent: #d4935a;
+            --accent-2: #e8b88a;
+            --accent-glow: rgba(212, 147, 90, 0.2);
+            --accent-glow-strong: rgba(212, 147, 90, 0.45);
+            --green: #5db87a;
+            --green-soft: rgba(93, 184, 122, 0.12);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif { font-family: 'Playfair Display', Georgia, serif; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+
+        /* ============================ THREE.JS CANVAS ============================ */
+        #three-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+        /* ============================ GRAIN ============================ */
+        .grain {
+            position: fixed; inset: 0; z-index: 2;
+            pointer-events: none; opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat; background-size: 180px;
+        }
+
+        /* ============================ SCROLL CONTENT ============================ */
+        .content { position: relative; z-index: 3; }
+
+        /* ============================ NAV ============================ */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 0 40px;
+            background: rgba(8, 8, 10, 0.5);
+            backdrop-filter: blur(24px) saturate(150%);
+            -webkit-backdrop-filter: blur(24px) saturate(150%);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: transform 0.4s;
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 4px; align-items: center; }
+        .nav-links a {
+            font-size: 13px; color: var(--text-3); font-weight: 500;
+            padding: 8px 16px; border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+        .nav-cta {
+            color: var(--bg) !important; background: var(--accent) !important;
+            font-weight: 600 !important; border-radius: 8px !important;
+        }
+        .nav-cta:hover { opacity: 0.9 !important; }
+
+        /* ============================ REVEAL SYSTEM ============================ */
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.vis { opacity: 1; transform: none; }
+        .rd1 { transition-delay: 0.1s; }
+        .rd2 { transition-delay: 0.2s; }
+        .rd3 { transition-delay: 0.3s; }
+        .rd4 { transition-delay: 0.4s; }
+        .rd5 { transition-delay: 0.5s; }
+
+        /* ============================ HERO ============================ */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            padding: 120px 40px 80px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .hero-grid { display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: center; width: 100%; }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--green);
+            background: var(--green-soft);
+            padding: 8px 18px; border-radius: 100px; margin-bottom: 32px;
+        }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse-dot 2s ease-in-out infinite; }
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(93,184,122,0.5); }
+            50% { box-shadow: 0 0 0 7px rgba(93,184,122,0); }
+        }
+        .hero h1 {
+            font-size: clamp(34px, 5.2vw, 62px);
+            line-height: 1.1; letter-spacing: -0.035em;
+            font-weight: 400; margin-bottom: 28px;
+        }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero-sub { font-size: 18px; line-height: 1.75; color: var(--text-2); max-width: 540px; margin-bottom: 40px; }
+        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 28px; font-size: 14px; font-weight: 600;
+            border-radius: 10px; border: none; cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--accent); color: var(--bg);
+            box-shadow: 0 4px 24px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.12);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px var(--accent-glow-strong); }
+        .btn-ghost { background: transparent; color: var(--text-2); border: 1px solid var(--border); }
+        .btn-ghost:hover { border-color: var(--text-3); color: var(--text); transform: translateY(-2px); }
+        .hero-stats { display: flex; gap: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+        .stat-val { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; }
+        .stat-val em { font-style: normal; color: var(--accent); }
+        .stat-label { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-top: 2px; }
+        .hero-stats-note { font-size: 12px; color: var(--text-3); margin-top: 18px; }
+
+        /* Photo */
+        .hero-photo-wrap { perspective: 900px; }
+        .hero-photo {
+            position: relative; width: 320px; height: 400px;
+            border-radius: 20px; overflow: hidden;
+            transform: rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+        }
+        .hero-photo:hover { transform: rotateY(0) rotateX(0); }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(8,8,10,0.6) 100%); pointer-events: none; }
+        .photo-badge {
+            position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 2;
+            background: rgba(17,17,20,0.6); backdrop-filter: blur(12px);
+            border-radius: 10px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.06);
+        }
+        .photo-name { font-size: 14px; font-weight: 600; }
+        .photo-title { font-size: 11px; color: var(--text-3); margin-top: 1px; }
+        .photo-fallback {
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1a1520, #0e1418);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 72px; font-weight: 700; color: var(--accent);
+            font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.04em;
+        }
+
+        /* ============================ SECTION PRIMITIVES ============================ */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.14em; color: var(--accent); margin-bottom: 20px;
+        }
+        .section-label::before { content: ''; width: 28px; height: 1.5px; background: var(--accent); }
+        .section-title { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; }
+        .section-title em { font-style: italic; color: var(--accent); }
+        .section-desc { font-size: 17px; color: var(--text-2); line-height: 1.75; max-width: 560px; margin-bottom: 8px; }
+
+        /* ============================ OFFER — DIAGNOSE / BUILD / RETAIN ============================ */
+        .offer-section { padding: 130px 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+        .offer-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 20px; padding: 40px 34px; position: relative; overflow: hidden;
+            transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+        }
+        .offer-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: var(--accent); transform: scaleX(0); transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .offer-card:hover::before { transform: scaleX(1); }
+        .offer-card:hover { border-color: rgba(212,147,90,0.2); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.28); }
+        .offer-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 42px; color: var(--accent); line-height: 1; margin-bottom: 18px; opacity: 0.9; }
+        .offer-step { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-3); margin-bottom: 10px; }
+        .offer-name { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 14px; }
+        .offer-body { font-size: 15px; color: var(--text-2); line-height: 1.75; }
+        .offer-body strong { color: var(--text); font-weight: 600; }
+        .offer-cta-row { text-align: center; margin-top: 44px; }
+
+        /* ============================ VALUE — TWO OFFERS ============================ */
+        .value-section { padding: 120px 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+        .value-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 20px; padding: 44px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .value-card:hover { border-color: rgba(212,147,90,0.18); transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,0.22); }
+        .value-icon {
+            width: 52px; height: 52px; border-radius: 14px; background: var(--accent-glow);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; color: var(--accent); margin-bottom: 24px;
+        }
+        .value-title { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .value-body { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-bottom: 24px; }
+        .value-list { display: flex; flex-direction: column; gap: 12px; }
+        .vitem { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+        .vdot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 8px var(--green-soft); }
+
+        /* ============================ PORTAL ============================ */
+        .portal-section { height: 50vh; min-height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; }
+        .portal-text { position: relative; z-index: 5; }
+        .portal-text h2 { font-size: clamp(36px, 6vw, 72px); letter-spacing: -0.04em; line-height: 1.05; }
+        .portal-text h2 em { font-style: italic; color: var(--accent); }
+        .portal-text p { font-size: 16px; color: var(--text-3); margin-top: 16px; }
+
+        /* ============================ PROJECTS ============================ */
+        .projects-section { padding: 40px 40px 140px; max-width: 1200px; margin: 0 auto; }
+        .projects-grid { display: flex; flex-direction: column; gap: 24px; }
+        .project-card {
+            position: relative; display: grid; grid-template-columns: 1.15fr 0.85fr;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 20px; overflow: hidden;
+            transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
+            transform-style: preserve-3d;
+        }
+        .project-card:hover { border-color: rgba(212,147,90,0.2); box-shadow: 0 24px 60px rgba(0,0,0,0.3), 0 0 80px var(--accent-glow); transform: translateY(-4px); }
+        .project-card::before {
+            content: ''; position: absolute; inset: 0; z-index: 0;
+            background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), var(--accent-glow), transparent 40%);
+            opacity: 0; transition: opacity 0.5s; pointer-events: none;
+        }
+        .project-card:hover::before { opacity: 1; }
+        .project-info { padding: 44px; position: relative; z-index: 1; display: flex; flex-direction: column; }
+        .project-badge {
+            display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--text-3); background: var(--elevated);
+            padding: 5px 14px; border-radius: 6px; margin-bottom: 20px; align-self: flex-start;
+        }
+        .project-name { font-size: 30px; font-weight: 400; letter-spacing: -0.025em; margin-bottom: 6px; }
+        .project-url { font-family: 'SF Mono', 'Cascadia Code', monospace; font-size: 12px; color: var(--accent); margin-bottom: 24px; opacity: 0.8; }
+
+        /* Problem -> Result blocks */
+        .pr-block { margin-bottom: 18px; }
+        .pr-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .pr-label::before { content: ''; width: 16px; height: 1.5px; }
+        .pr-label.problem { color: var(--text-3); }
+        .pr-label.problem::before { background: var(--text-3); }
+        .pr-label.result { color: var(--green); }
+        .pr-label.result::before { background: var(--green); }
+        .pr-text { font-size: 15px; color: var(--text-2); line-height: 1.72; }
+        .pr-text.win { color: var(--text); }
+
+        .tech-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); font-weight: 600; margin: 22px 0 10px; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+        .tag {
+            font-family: 'SF Mono', 'Cascadia Code', monospace; font-size: 11px;
+            padding: 5px 12px; border-radius: 6px; background: var(--elevated);
+            color: var(--text-3); border: 1px solid var(--border); transition: all 0.2s;
+        }
+        .project-card:hover .tag { background: var(--accent-glow); color: var(--accent-2); border-color: rgba(212,147,90,0.15); }
+
+        .project-visual {
+            position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center;
+            padding: 44px 44px 44px 12px; gap: 22px;
+            border-left: 1px solid var(--border);
+        }
+        .result-metric { }
+        .rm-val { font-family: 'Playfair Display', serif; font-size: clamp(40px, 4vw, 56px); font-weight: 700; color: var(--accent); line-height: 1; letter-spacing: -0.03em; display: block; }
+        .rm-label { font-size: 12px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-top: 8px; max-width: 220px; }
+        .project-highlight { display: flex; gap: 14px; align-items: flex-start; }
+        .ph-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 8px var(--green-soft); }
+        .ph-text { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+        .project-arrow {
+            position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%;
+            background: var(--elevated); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; color: var(--text-3); z-index: 2; transition: all 0.3s;
+        }
+        .project-card:hover .project-arrow { background: var(--accent); color: var(--bg); border-color: var(--accent); transform: translate(3px, -3px); }
+
+        /* ============================ CREDIBILITY / JOURNEY ============================ */
+        .journey-section { padding: 40px 40px 140px; max-width: 1200px; margin: 0 auto; }
+        .journey-timeline { position: relative; display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+        .journey-timeline::before {
+            content: ''; position: absolute; left: 140px; top: 0; bottom: 0; width: 1px;
+            background: linear-gradient(180deg, transparent, var(--border) 10%, var(--border) 90%, transparent);
+        }
+        .journey-item { display: grid; grid-template-columns: 120px 1fr; gap: 48px; padding: 36px 0; position: relative; }
+        .journey-item::before {
+            content: ''; position: absolute; left: 136px; top: 44px; width: 9px; height: 9px; border-radius: 50%;
+            background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--border);
+        }
+        .journey-when { font-family: 'SF Mono', 'Cascadia Code', monospace; font-size: 12px; color: var(--text-3); text-align: right; padding-top: 4px; }
+        .journey-content { padding-left: 28px; }
+        .journey-role { font-size: 20px; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.01em; }
+        .journey-co { font-size: 15px; color: var(--accent); font-weight: 500; margin-bottom: 14px; }
+        .journey-desc { font-size: 15px; color: var(--text-2); line-height: 1.75; }
+
+        /* ============================ CTA ============================ */
+        .cta-section { padding: 40px 40px 120px; text-align: center; max-width: 1200px; margin: 0 auto; }
+        .cta-inner {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 28px;
+            padding: 80px 40px; position: relative; overflow: hidden;
+        }
+        .cta-inner::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(700px circle at 50% -10%, var(--accent-glow), transparent 55%);
+        }
+        .cta-section h2 { font-size: clamp(32px, 5vw, 58px); letter-spacing: -0.035em; line-height: 1.1; margin-bottom: 20px; position: relative; }
+        .cta-section h2 em { font-style: italic; color: var(--accent); }
+        .cta-section p { font-size: 17px; color: var(--text-2); max-width: 520px; margin: 0 auto 40px; line-height: 1.75; position: relative; }
+        .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+        .cta-micro { font-size: 13px; color: var(--text-3); margin-top: 24px; position: relative; }
+
+        footer { position: relative; z-index: 3; padding: 24px 40px 32px; max-width: 1200px; margin: 0 auto; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 13px; color: var(--text-3); font-weight: 500; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+        footer small { font-size: 12px; color: var(--text-3); }
+
+        /* ============================ DIVIDER ============================ */
+        .divider { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .divider-line { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+        /* ============================ RESPONSIVE ============================ */
+        @media (max-width: 960px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+            .hero-photo-wrap { order: -1; display: flex; justify-content: center; }
+            .hero-photo { width: 240px; height: 300px; transform: none; }
+            .hero { min-height: auto; padding: 100px 24px 60px; }
+            .offer-grid { grid-template-columns: 1fr; }
+            .value-grid { grid-template-columns: 1fr; }
+            .project-card { grid-template-columns: 1fr; }
+            .project-visual { border-left: none; border-top: 1px solid var(--border); padding: 32px 44px 44px; flex-direction: row; flex-wrap: wrap; gap: 20px 40px; }
+            .rm-label { max-width: none; }
+            .journey-timeline::before { left: 0; }
+            .journey-item { grid-template-columns: 1fr; gap: 8px; }
+            .journey-item::before { left: -4px; top: 4px; }
+            .journey-content { padding-left: 20px; }
+            .journey-when { text-align: left; }
+            .hero-stats { gap: 32px; }
+        }
+        @media (max-width: 600px) {
+            nav { padding: 0 20px; }
+            .nav-links a:not(.nav-cta) { display: none; }
+            .hero { padding: 90px 20px 48px; }
+            .hero h1 { font-size: 30px; }
+            .hero-sub { font-size: 15px; }
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .hero-photo { width: 180px; height: 230px; }
+            .offer-section, .value-section, .projects-section, .journey-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+            footer { padding-left: 20px; padding-right: 20px; }
+            .divider { padding: 0 20px; }
+            .offer-card { padding: 32px 26px; }
+            .value-card { padding: 30px; }
+            .project-info { padding: 28px; }
+            .project-visual { padding: 26px 28px 28px; flex-direction: column; }
+            .project-name { font-size: 24px; }
+            .cta-inner { padding: 52px 24px; }
+            .footer-inner { flex-direction: column; gap: 12px; align-items: center; }
+            .stat-val { font-size: 26px; }
+            .portal-section { height: 40vh; min-height: 240px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="three-canvas"></canvas>
+<div class="grain"></div>
+
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">M<span>.</span>T</div>
+        <div class="nav-links">
+            <a href="#approach">Approach</a>
+            <a href="#work">Work</a>
+            <a href="#proof">Proof</a>
+            <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown" class="nav-cta">Book a teardown</a>
+        </div>
+    </div>
+</nav>
+
+<div class="content">
+
+    <!-- ======== HERO ======== -->
+    <header class="hero">
+        <div class="hero-grid">
+            <div>
+                <div class="hero-eyebrow reveal">
+                    <span class="status-dot"></span>
+                    Now booking &middot; free operations teardowns
+                </div>
+
+                <!-- NICHE-HOOK: swap "your business" for the chosen niche, e.g. "dental practices", "law firms", "logistics teams". -->
+                <h1 class="serif reveal rd1">I find where your business is losing hours to <em>manual&nbsp;work</em>&mdash;and build the systems that fix it.</h1>
+
+                <!-- NICHE-HOOK: replace the three example pains below with the specific manual pain of the chosen niche. -->
+                <p class="hero-sub reveal rd2">
+                    You&rsquo;re paying good people to copy&#8209;paste between spreadsheets, chase updates in chat, and rebuild the same reports every week. I build the automation, internal tools, and data systems that make that work disappear&mdash;so your team gets its time back and the business runs faster.
+                </p>
+
+                <div class="hero-ctas reveal rd3">
+                    <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown&amp;body=Hi%20Mohit%2C%20here%27s%20a%20quick%20look%20at%20my%20business%20and%20where%20I%20think%20we%27re%20losing%20time%3A%0A%0A" class="btn btn-primary">Book a free operations teardown &rarr;</a>
+                    <a href="#work" class="btn btn-ghost">See the outcomes</a>
+                </div>
+
+                <div class="hero-stats reveal rd4">
+                    <div>
+                        <div class="stat-val"><em>45%</em></div>
+                        <div class="stat-label">Less manual work</div>
+                    </div>
+                    <div>
+                        <div class="stat-val"><em>60%</em></div>
+                        <div class="stat-label">Faster answers</div>
+                    </div>
+                    <div>
+                        <div class="stat-val"><em>200+</em></div>
+                        <div class="stat-label">People served daily</div>
+                    </div>
+                </div>
+                <p class="hero-stats-note reveal rd4">Real results from systems I&rsquo;ve already shipped in production.</p>
+            </div>
+
+            <div class="hero-photo-wrap reveal rd2">
+                <div class="hero-photo" id="hero-photo">
+                    <img src="./photo.jpg" alt="Mohit Taneja"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-fallback" style="display:none;">MT</div>
+                    <div class="photo-badge">
+                        <div class="photo-name">Mohit Taneja</div>
+                        <div class="photo-title">Automation &amp; data systems &middot; ex&#8209;Siemens, ex&#8209;IndiGo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <!-- ======== OFFER: DIAGNOSE / BUILD / RETAIN ======== -->
+    <section id="approach" class="offer-section">
+        <div class="section-label reveal">How we&rsquo;d work together</div>
+        <h2 class="section-title serif reveal rd1">Diagnose <em>&rarr;</em> Build <em>&rarr;</em> Retain</h2>
+        <p class="section-desc reveal rd2">No big upfront risk. We start by finding exactly where the time and money are leaking, I build the system that fixes it, then keep it improving as you grow.</p>
+
+        <div class="offer-grid">
+            <div class="offer-card reveal rd1">
+                <div class="offer-num serif">01</div>
+                <div class="offer-step">Diagnose</div>
+                <div class="offer-name serif">The free operations teardown</div>
+                <p class="offer-body">In <strong>20&ndash;30 minutes</strong> I map where your team is leaking hours, money, and focus to manual work and disconnected tools. No cost, no pitch&mdash;you leave knowing your <strong>three biggest time&#8209;sinks</strong>, whether we work together or not.</p>
+            </div>
+            <div class="offer-card reveal rd2">
+                <div class="offer-num serif">02</div>
+                <div class="offer-step">Build</div>
+                <div class="offer-name serif">I build the fix</div>
+                <p class="offer-body">Custom automation, internal tools, and AI workflows that remove the specific manual work we found. You get a system that does <strong>in seconds what used to take hours</strong>&mdash;priced on the outcome it delivers, not the hours it takes.</p>
+            </div>
+            <div class="offer-card reveal rd3">
+                <div class="offer-num serif">03</div>
+                <div class="offer-step">Retain</div>
+                <div class="offer-name serif">I keep it improving</div>
+                <p class="offer-body">As the business grows, the system grows with it&mdash;new workflows, tweaks, and maintenance on a <strong>simple monthly plan</strong>. So the manual work never creeps back in and you always have someone who knows your systems.</p>
+            </div>
+        </div>
+
+        <div class="offer-cta-row reveal">
+            <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown" class="btn btn-primary">Book your free teardown &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ======== VALUE: TWO OFFERS ======== -->
+    <section class="value-section">
+        <div class="section-label reveal">What I build</div>
+        <h2 class="section-title serif reveal rd1">Two ways I get your <em>time back</em></h2>
+        <p class="section-desc reveal rd2">Most businesses need one of these first&mdash;then the other. We&rsquo;ll figure out which in the teardown.</p>
+
+        <div class="value-grid">
+            <div class="value-card reveal rd1">
+                <div class="value-icon">&#9889;</div>
+                <div class="value-title serif">Kill the manual work</div>
+                <p class="value-body">The repetitive, copy&#8209;paste, chase&#8209;it&#8209;down work your team does by hand every day&mdash;I build the systems that do it automatically, accurately, and instantly.</p>
+                <div class="value-list">
+                    <div class="vitem"><span class="vdot"></span><span>Automate the manual processes eating your team&rsquo;s week</span></div>
+                    <div class="vitem"><span class="vdot"></span><span>Custom internal tools built around how you actually work</span></div>
+                    <div class="vitem"><span class="vdot"></span><span>AI that answers questions and handles busywork on its own</span></div>
+                </div>
+            </div>
+            <div class="value-card reveal rd2">
+                <div class="value-icon">&#128202;</div>
+                <div class="value-title serif">See your business clearly</div>
+                <p class="value-body">When your numbers live in five tools that don&rsquo;t talk to each other, decisions are guesswork. I connect it all into one clear, trustworthy view&mdash;and make it AI&#8209;ready.</p>
+                <div class="value-list">
+                    <div class="vitem"><span class="vdot"></span><span>One source of truth instead of scattered spreadsheets</span></div>
+                    <div class="vitem"><span class="vdot"></span><span>Clean, decision&#8209;ready reporting you can actually trust</span></div>
+                    <div class="vitem"><span class="vdot"></span><span>The data foundation that makes automation &amp; AI possible</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== PORTAL ======== -->
+    <section class="portal-section" id="portal">
+        <div class="portal-text">
+            <h2 class="serif reveal">Real systems. Real <em>outcomes</em>.</h2>
+            <p class="reveal rd1">Every project below removed real, expensive manual work&mdash;here&rsquo;s the before and after.</p>
+        </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <!-- ======== WORK (reframed: problem -> result) ======== -->
+    <section id="work" class="projects-section">
+        <div class="section-label reveal">Selected work</div>
+        <h2 class="section-title serif reveal rd1">Problems solved, not just <em>things built</em></h2>
+        <p class="section-desc reveal rd2" style="margin-bottom: 56px;">The same work reads two ways. Here it leads with the business problem it killed&mdash;the tech that made it happen sits underneath.</p>
+
+        <div class="projects-grid">
+
+            <!-- VAULT FX (client, live) -->
+            <a href="https://www.vaultfxtrading.com" target="_blank" rel="noopener" class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Client project &middot; Live</span>
+                    <div class="project-name serif">Vault FX</div>
+                    <div class="project-url">vaultfxtrading.com</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">A forex educator had a strong program but a site that didn&rsquo;t convert&mdash;visitors couldn&rsquo;t quickly see why to trust it or how it worked, so sign&#8209;ups stalled.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built the platform that does the selling for them: a clear &ldquo;pay only after you profit&rdquo; offer, a live trading desk, real mentor proof, and a one&#8209;tap application flow. It&rsquo;s live now and turning visitors into enrolled students.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">Framer Motion</span>
+                        <span class="tag">Netlify</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">Live</span>
+                        <span class="rm-label">Deployed &amp; in use by the client today</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Trust built in the first five seconds on the page</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Frictionless apply flow into a private student community</span></div>
+                </div>
+                <span class="project-arrow">&nearr;</span>
+            </a>
+
+            <!-- AGENTIC PREMIERE -->
+            <div class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">AI tooling &middot; Marketing teams</span>
+                    <div class="project-name serif">AI Video Editor</div>
+                    <div class="project-url">Built for a content team &middot; runs inside Premiere Pro</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">A content team was burning hours on every video&mdash;manually hunting for B&#8209;roll and second&#8209;guessing whether each cut stayed on&#8209;brand.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built an AI editor that lives inside their editing tool. It watches the footage, drops in the right B&#8209;roll automatically, and keeps every edit on&#8209;brand&mdash;so the team ships more videos in less time, for under $30 a month to run.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">Gemini Vision</span>
+                        <span class="tag">UXP SDK</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">FFmpeg</span>
+                        <span class="tag">MCP</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">Hours &rarr; min</span>
+                        <span class="rm-label">Per video, on B&#8209;roll and brand checks</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">B&#8209;roll auto&#8209;sourced and inserted, no manual searching</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Every edit kept on&#8209;brand from one Brand DNA source</span></div>
+                </div>
+            </div>
+
+            <!-- ASKPRISM / INDIGO -->
+            <div class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Enterprise AI &middot; IndiGo (India&rsquo;s largest airline)</span>
+                    <div class="project-name serif">AskPrism</div>
+                    <div class="project-url">Internal AI assistant &middot; 200+ daily users</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">Staff lost hours a day hunting for answers across five disconnected systems&mdash;every question meant digging through a different tool.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built an AI assistant that answers instantly from all of them at once. Resolution time dropped ~60% and manual analyst work ~45%, for 200+ people every single day.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">GPT-4</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">Snowflake</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">60%</span>
+                        <span class="rm-label">Faster to an answer &middot; ~45% less manual effort</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">One place to ask instead of five systems to search</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Answers people can trust for mission&#8209;critical decisions</span></div>
+                </div>
+            </div>
+
+            <!-- INDIGO DATA FOUNDATION (Offer B showcase) -->
+            <div class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Data foundation &middot; IndiGo</span>
+                    <div class="project-name serif">Decision-Ready Data</div>
+                    <div class="project-url">Data pipelines &middot; InterGlobe Aviation</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">Business teams couldn&rsquo;t trust&mdash;or even see&mdash;their own numbers. Data was scattered and messy across systems that didn&rsquo;t talk to each other, so decisions were half&#8209;blind.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built the pipelines that turn scattered, raw data into one clean, decision&#8209;ready view leaders can actually act on&mdash;and made it AI&#8209;ready, so automation on top of it just works. Processing overhead dropped ~40%.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">Snowflake</span>
+                        <span class="tag">Azure Data Factory</span>
+                        <span class="tag">ETL / ELT</span>
+                        <span class="tag">DBT</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">40%</span>
+                        <span class="rm-label">Less processing overhead &middot; one trustworthy view</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Messy, scattered data turned into one source of truth</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Clean, AI&#8209;ready foundation for anything built on top</span></div>
+                </div>
+            </div>
+
+            <!-- TRIGRR -->
+            <a href="https://trgrr.netlify.app" target="_blank" rel="noopener" class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Product &middot; Sales teams</span>
+                    <div class="project-name serif">Trigrr</div>
+                    <div class="project-url">trgrr.netlify.app</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">Sales managers can&rsquo;t sit in on every call, so coaching is guesswork and reps keep repeating the same deal&#8209;losing mistakes.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built an AI coach that scores every call, pinpoints the exact moment a deal slipped, and runs reps through realistic practice calls&mdash;so a whole team levels up without adding managers.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Deepgram</span>
+                        <span class="tag">Vapi</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">Every call</span>
+                        <span class="rm-label">Scored, diagnosed and coached automatically</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Consistent coaching without adding headcount</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">AI practice calls that rehearse real objections</span></div>
+                </div>
+                <span class="project-arrow">&nearr;</span>
+            </a>
+
+            <!-- HEALTHFIRE -->
+            <a href="https://healthfire.vercel.app" target="_blank" rel="noopener" class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Product &middot; Consumer finance</span>
+                    <div class="project-name serif">HealthFire</div>
+                    <div class="project-url">healthfire.vercel.app</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">Families overpay thousands on health coverage because the rules are impossible to model by hand&mdash;and a CPA is expensive.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built a tool that runs the real IRS/HHS math in seconds and explains, in plain English, exactly how to save&mdash;turning a CPA&#8209;level analysis into a few clicks.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">LLM</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">Seconds</span>
+                        <span class="rm-label">For math that used to need a specialist</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Real IRS/HHS formulas, not rough estimates</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Plain&#8209;English guidance anyone can act on</span></div>
+                </div>
+                <span class="project-arrow">&nearr;</span>
+            </a>
+
+            <!-- SIEMENS -->
+            <div class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Enterprise AI &middot; Siemens Energy</span>
+                    <div class="project-name serif">Enterprise AI Automation</div>
+                    <div class="project-url">Internal R&amp;D &middot; Siemens Energy</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">Engineering leaders needed to know which AI was actually worth betting on&mdash;with no unbiased read and no time to test it themselves.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built and benchmarked the options, then delivered the recommendation their leadership adopted&mdash;plus a production assistant that automated 3+ internal workflows at 89% accuracy.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">Azure OpenAI</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Intent Classification</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">Adopted</span>
+                        <span class="rm-label">By senior engineering leadership &middot; 89% accuracy</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">3+ enterprise workflows automated end to end</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">A clear, trusted call on where to invest in AI</span></div>
+                </div>
+            </div>
+
+            <!-- SCOUTPANELS -->
+            <a href="https://scoutpanels.com" target="_blank" rel="noopener" class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Product &middot; B2B marketplace</span>
+                    <div class="project-name serif">ScoutPanels</div>
+                    <div class="project-url">scoutpanels.com</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">Founders ship products half&#8209;blind&mdash;honest feedback from the right users is slow and hard to get.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built a marketplace that connects founders with working PMs and engineers from Visa, Adobe and Microsoft for structured feedback on exactly what&rsquo;s blocking adoption.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">Full-Stack</span>
+                        <span class="tag">ML Matching</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">50+</span>
+                        <span class="rm-label">Discovery interviews &middot; 15+ validators onboarded</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Real usage feedback instead of guesswork</span></div>
+                </div>
+                <span class="project-arrow">&nearr;</span>
+            </a>
+
+            <!-- CONTEXTLAYER -->
+            <a href="https://contextlayerio.netlify.app" target="_blank" rel="noopener" class="project-card reveal" data-glow>
+                <div class="project-info">
+                    <span class="project-badge">Product &middot; Consulting teams</span>
+                    <div class="project-name serif">ContextLayer</div>
+                    <div class="project-url">contextlayerio.netlify.app</div>
+                    <div class="pr-block">
+                        <div class="pr-label problem">The problem</div>
+                        <p class="pr-text">Consultants waste time re&#8209;writing the same AI prompts from scratch for every new engagement.</p>
+                    </div>
+                    <div class="pr-block">
+                        <div class="pr-label result">What changed</div>
+                        <p class="pr-text win">I built a tool that turns engagement details into five ready&#8209;to&#8209;use, context&#8209;grounded prompts&mdash;no signup, free to use.</p>
+                    </div>
+                    <div class="tech-label">Built with</div>
+                    <div class="project-tags">
+                        <span class="tag">LLM Integration</span>
+                        <span class="tag">Prompt Engineering</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="result-metric">
+                        <span class="rm-val">5 prompts</span>
+                        <span class="rm-label">Grounded in real project context, instantly</span>
+                    </div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Works with Claude, ChatGPT and Copilot</span></div>
+                </div>
+                <span class="project-arrow">&nearr;</span>
+            </a>
+
+        </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <!-- ======== PROOF / CREDIBILITY ======== -->
+    <section id="proof" class="journey-section">
+        <div class="section-label reveal">Where I&rsquo;ve done this before</div>
+        <h2 class="section-title serif reveal rd1">The same systems, built for some<br>of the <em>largest operations</em> around.</h2>
+        <p class="section-desc reveal rd2">I&rsquo;m not learning this on your dime. The automation and data work I&rsquo;d build for you, I&rsquo;ve already shipped at an airline and a global energy company.</p>
+
+        <div class="journey-timeline">
+            <div class="journey-item reveal">
+                <div class="journey-when">Now</div>
+                <div class="journey-content">
+                    <div class="journey-role">Independent &mdash; automation &amp; data systems</div>
+                    <div class="journey-co">Working with businesses directly</div>
+                    <p class="journey-desc">I build automation, internal tools, and data systems for businesses end to end&mdash;including a live client platform (Vault FX), an AI video editor for a marketing team, and an AI sales coach.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-when">2024 &ndash; 2026</div>
+                <div class="journey-content">
+                    <div class="journey-role">Data Science Engineer</div>
+                    <div class="journey-co">IndiGo &mdash; India&rsquo;s largest airline</div>
+                    <p class="journey-desc">Built the AI assistant and data pipelines that cut manual work ~45% and sped answers ~60% for 200+ people a day&mdash;turning scattered data into one decision&#8209;ready, AI&#8209;ready view.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-when">2025</div>
+                <div class="journey-content">
+                    <div class="journey-role">AI Developer</div>
+                    <div class="journey-co">Tech Baton (client work)</div>
+                    <p class="journey-desc">Built agentic AI systems and chatbots for client companies and delivered them end to end&mdash;the same kind of hands&#8209;on build work I&rsquo;d do for you.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-when">2024</div>
+                <div class="journey-content">
+                    <div class="journey-role">AI Researcher</div>
+                    <div class="journey-co">Siemens Energy</div>
+                    <p class="journey-desc">Built and benchmarked enterprise AI and automated 3+ internal workflows; my recommendation was adopted by senior engineering leadership.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== CTA ======== -->
+    <section class="cta-section">
+        <div class="cta-inner reveal">
+            <h2 class="serif">Let&rsquo;s find your <em>hidden hours</em>.</h2>
+            <!-- NICHE-HOOK: once the niche is set, name their specific pain here (e.g. "where your front desk loses a day a week"). -->
+            <p>Book a free operations teardown&mdash;20&ndash;30 minutes, no cost, no pitch. You&rsquo;ll leave knowing exactly where your business is losing time, and what it&rsquo;d take to win it back.</p>
+            <div class="cta-buttons">
+                <a href="mailto:taneja.mohit2002.mn@gmail.com?subject=Free%20Operations%20Teardown&amp;body=Hi%20Mohit%2C%20here%27s%20a%20quick%20look%20at%20my%20business%20and%20where%20I%20think%20we%27re%20losing%20time%3A%0A%0A" class="btn btn-primary">Book a free operations teardown &rarr;</a>
+                <a href="https://linkedin.com/in/mohittaneja1" target="_blank" rel="noopener" class="btn btn-ghost">Connect on LinkedIn</a>
+            </div>
+            <p class="cta-micro">Prefer email? <a href="mailto:taneja.mohit2002.mn@gmail.com" style="color:var(--accent);">taneja.mohit2002.mn@gmail.com</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="mailto:taneja.mohit2002.mn@gmail.com">Email</a>
+                <a href="https://linkedin.com/in/mohittaneja1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+            <small>&copy; 2026 Mohit Taneja &middot; Automation &amp; data systems</small>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+(function() {
+    // ============================
+    // THREE.JS SCENE  (shared design system with index.html)
+    // ============================
+    const canvas = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 32);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
+    scene.add(ambientLight);
+    const pointLight1 = new THREE.PointLight(0xd4935a, 1.5, 80);
+    pointLight1.position.set(10, 10, 20);
+    scene.add(pointLight1);
+    const pointLight2 = new THREE.PointLight(0x5db87a, 0.8, 60);
+    pointLight2.position.set(-15, -10, 15);
+    scene.add(pointLight2);
+
+    const wireMat = new THREE.MeshBasicMaterial({ color: 0xd4935a, wireframe: true, transparent: true, opacity: 0.14 });
+    const wireMat2 = new THREE.MeshBasicMaterial({ color: 0x6e8a8a, wireframe: true, transparent: true, opacity: 0.10 });
+    const wireMat3 = new THREE.MeshBasicMaterial({ color: 0x8a7a9a, wireframe: true, transparent: true, opacity: 0.10 });
+
+    const shapes = [];
+    const shapeConfigs = [
+        { geo: new THREE.IcosahedronGeometry(1.8, 1), mat: wireMat, pos: [-8, 5, -5], speed: 0.003 },
+        { geo: new THREE.OctahedronGeometry(1.4, 0), mat: wireMat2, pos: [10, -3, -8], speed: 0.004 },
+        { geo: new THREE.IcosahedronGeometry(1.2, 0), mat: wireMat3, pos: [-6, -7, -3], speed: 0.005 },
+        { geo: new THREE.TetrahedronGeometry(1.6, 0), mat: wireMat, pos: [12, 7, -10], speed: 0.003 },
+        { geo: new THREE.OctahedronGeometry(1.0, 1), mat: wireMat2, pos: [-12, 2, -6], speed: 0.004 },
+        { geo: new THREE.IcosahedronGeometry(2.2, 1), mat: wireMat3, pos: [6, -8, -12], speed: 0.002 },
+        { geo: new THREE.DodecahedronGeometry(1.3, 0), mat: wireMat, pos: [0, 10, -8], speed: 0.003 },
+        { geo: new THREE.TetrahedronGeometry(0.9, 0), mat: wireMat2, pos: [15, 0, -5], speed: 0.006 },
+    ];
+
+    shapeConfigs.forEach(cfg => {
+        const mesh = new THREE.Mesh(cfg.geo, cfg.mat);
+        mesh.position.set(...cfg.pos);
+        mesh.userData = { basePos: new THREE.Vector3(...cfg.pos), speed: cfg.speed, phase: Math.random() * Math.PI * 2 };
+        scene.add(mesh);
+        shapes.push(mesh);
+    });
+
+    const portalGeo = new THREE.TorusGeometry(4, 0.06, 16, 100);
+    const portalMat = new THREE.MeshBasicMaterial({ color: 0xd4935a, transparent: true, opacity: 0.0 });
+    const portal = new THREE.Mesh(portalGeo, portalMat);
+    portal.position.set(0, 0, -5);
+    scene.add(portal);
+
+    const portalGlowGeo = new THREE.TorusGeometry(4.2, 0.3, 16, 100);
+    const portalGlowMat = new THREE.MeshBasicMaterial({ color: 0xd4935a, transparent: true, opacity: 0.0 });
+    const portalGlow = new THREE.Mesh(portalGlowGeo, portalGlowMat);
+    portalGlow.position.copy(portal.position);
+    scene.add(portalGlow);
+
+    const PARTICLE_COUNT = window.innerWidth < 768 ? 120 : 300;
+    const particleGeo = new THREE.BufferGeometry();
+    const pPositions = new Float32Array(PARTICLE_COUNT * 3);
+    const pVelocities = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        pPositions[i * 3] = (Math.random() - 0.5) * 60;
+        pPositions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+        pPositions[i * 3 + 2] = (Math.random() - 0.5) * 30 - 10;
+        pVelocities.push({ x: (Math.random() - 0.5) * 0.01, y: (Math.random() - 0.5) * 0.01, z: (Math.random() - 0.5) * 0.005 });
+    }
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+    const particleMat = new THREE.PointsMaterial({ color: 0x888888, size: 1.2, transparent: true, opacity: 0.2, sizeAttenuation: true });
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    const MAX_CONNECTIONS = 100;
+    const CONNECTION_DIST = 8;
+    const lineGeo = new THREE.BufferGeometry();
+    const linePositions = new Float32Array(MAX_CONNECTIONS * 6);
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    lineGeo.setDrawRange(0, 0);
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.04 });
+    const lines = new THREE.LineSegments(lineGeo, lineMat);
+    scene.add(lines);
+
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', e => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    let scrollProgress = 0;
+    function getScrollProgress() {
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        return maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    }
+    window.addEventListener('scroll', () => { scrollProgress = getScrollProgress(); }, { passive: true });
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    let time = 0;
+    function animate() {
+        requestAnimationFrame(animate);
+        time += 0.008;
+
+        const targetCamX = mouseX * 1.5;
+        const targetCamY = -mouseY * 1.0;
+        camera.position.x += (targetCamX - camera.position.x) * 0.03;
+        camera.position.y += (targetCamY - camera.position.y) * 0.03;
+
+        const targetZ = 32 - scrollProgress * 8;
+        camera.position.z += (targetZ - camera.position.z) * 0.05;
+        camera.lookAt(0, 0, -5);
+
+        shapes.forEach(mesh => {
+            const ud = mesh.userData;
+            mesh.rotation.x += ud.speed;
+            mesh.rotation.y += ud.speed * 0.7;
+            mesh.position.x = ud.basePos.x + Math.sin(time + ud.phase) * 1.2;
+            mesh.position.y = ud.basePos.y + Math.cos(time * 0.7 + ud.phase) * 0.8;
+            const spread = 1 + scrollProgress * 0.6;
+            mesh.position.x *= spread;
+            mesh.position.y *= spread;
+            mesh.material.opacity = Math.max(0.05, 0.25 - scrollProgress * 0.2);
+        });
+
+        const portalStart = 0.30, portalPeak = 0.38, portalEnd = 0.46;
+        let portalOpacity = 0;
+        let portalScale = 0.3;
+        if (scrollProgress > portalStart && scrollProgress < portalEnd) {
+            if (scrollProgress < portalPeak) {
+                const t = (scrollProgress - portalStart) / (portalPeak - portalStart);
+                portalOpacity = t;
+                portalScale = 0.3 + t * 0.7;
+            } else {
+                const t = (scrollProgress - portalPeak) / (portalEnd - portalPeak);
+                portalOpacity = 1 - t;
+                portalScale = 1 + t * 2;
+            }
+        }
+        portal.material.opacity = portalOpacity * 0.6;
+        portal.scale.setScalar(portalScale);
+        portal.rotation.z = time * 0.2;
+        portal.rotation.x = Math.sin(time * 0.3) * 0.15;
+
+        portalGlow.material.opacity = portalOpacity * 0.08;
+        portalGlow.scale.setScalar(portalScale);
+        portalGlow.rotation.z = -time * 0.15;
+
+        const posArray = particles.geometry.attributes.position.array;
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            posArray[i * 3] += pVelocities[i].x;
+            posArray[i * 3 + 1] += pVelocities[i].y;
+            posArray[i * 3 + 2] += pVelocities[i].z;
+            if (Math.abs(posArray[i * 3]) > 30) pVelocities[i].x *= -1;
+            if (Math.abs(posArray[i * 3 + 1]) > 20) pVelocities[i].y *= -1;
+            if (Math.abs(posArray[i * 3 + 2] + 10) > 15) pVelocities[i].z *= -1;
+        }
+        particles.geometry.attributes.position.needsUpdate = true;
+        particles.material.opacity = 0.15 + Math.sin(time * 0.5) * 0.03;
+
+        let lineIdx = 0;
+        const lp = lines.geometry.attributes.position.array;
+        for (let i = 0; i < PARTICLE_COUNT && lineIdx < MAX_CONNECTIONS; i++) {
+            for (let j = i + 1; j < PARTICLE_COUNT && lineIdx < MAX_CONNECTIONS; j++) {
+                const dx = posArray[i*3] - posArray[j*3];
+                const dy = posArray[i*3+1] - posArray[j*3+1];
+                const dz = posArray[i*3+2] - posArray[j*3+2];
+                const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                if (dist < CONNECTION_DIST) {
+                    const base = lineIdx * 6;
+                    lp[base] = posArray[i*3];       lp[base+1] = posArray[i*3+1];   lp[base+2] = posArray[i*3+2];
+                    lp[base+3] = posArray[j*3];     lp[base+4] = posArray[j*3+1];   lp[base+5] = posArray[j*3+2];
+                    lineIdx++;
+                }
+            }
+        }
+        lines.geometry.setDrawRange(0, lineIdx * 2);
+        lines.geometry.attributes.position.needsUpdate = true;
+        lineMat.opacity = 0.03 + (1 - scrollProgress) * 0.03;
+
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // ============================ SCROLL REVEALS ============================
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('vis'); });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ============================ PROJECT CARD GLOW TRACKING ============================
+    document.querySelectorAll('[data-glow]').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+            card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+        });
+    });
+
+})();
+</script>
+
+</body>
+</html>
