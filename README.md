@@ -1,9 +1,9 @@
-# Mohit Taneja — AI Systems & Full-Stack Product Portfolio
+# Mohit Taneja — Data Science & Applied AI Portfolio
 
-A static, outcome-focused portfolio for selected AI, data, and full-stack
-product work.
+A static, career-focused portfolio for selected enterprise data engineering,
+machine-learning research, applied AI, and end-to-end product work.
 
-[View the live portfolio](https://portfolio-eight-steel-76.vercel.app)
+[View the live portfolio](https://portfolio-mohittaneja.netlify.app)
 
 ![Portfolio home page](portfolio-preview.jpg)
 
@@ -11,10 +11,11 @@ product work.
 
 - Professional experience across applied AI, data engineering, and product
   development
-- Selected SaaS, healthcare, video, marketplace, and client projects
+- IndiGo Flight Operations and AskPrism outcomes, followed by selected AI,
+  research, SaaS, healthcare, video, marketplace, and client projects
 - Technical strengths across Python, TypeScript, LLM applications, data
   systems, and cloud deployment
-- Direct contact and project-enquiry links
+- Direct contact links for Data Science, Applied AI, and AI/ML engineering roles
 
 ## Implementation
 

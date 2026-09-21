@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit Taneja — Full-Stack AI Engineer</title>
+    <title>Mohit Taneja — Data Science &amp; Applied AI Engineer</title>
+    <meta name="description" content="Mohit Taneja is a Data Science and Applied AI Engineer building production data platforms, RAG systems, machine-learning workflows, and reliable AI products.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <style>
         :root {
@@ -383,6 +384,22 @@
             color: var(--accent-2);
             border-color: rgba(212,147,90,0.15);
         }
+        .project-links {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+        }
+        .project-link {
+            position: relative; z-index: 3;
+            display: inline-flex; align-items: center; gap: 6px;
+            min-height: 40px; padding: 9px 14px;
+            border: 1px solid var(--border); border-radius: 9px;
+            background: var(--elevated); color: var(--text-2);
+            font-size: 13px; font-weight: 600;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .project-link:hover, .project-link:focus-visible {
+            border-color: var(--accent); color: var(--bg); background: var(--accent);
+            outline: none;
+        }
 
         .project-visual {
             position: relative; z-index: 1;
@@ -591,7 +608,7 @@
             <a href="#journey">Journey</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
-            <a href="mailto:taneja.mohit2002.mn@gmail.com" class="nav-cta">Let's Talk</a>
+            <a href="mailto:taneja.mohit2002.mn@gmail.com" class="nav-cta">Contact</a>
         </div>
     </div>
 </nav>
@@ -604,21 +621,21 @@
             <div>
                 <div class="hero-eyebrow reveal">
                     <span class="status-dot"></span>
-                    Available for projects
+                    Open to Data Science &amp; Applied AI roles
                 </div>
-                <h1 class="serif reveal rd1">I architect <em>AI&nbsp;systems</em><br>& ship full&#8209;stack products.</h1>
+                <h1 class="serif reveal rd1">Data science for <em>real&nbsp;systems</em>,<br>from pipelines to production AI.</h1>
                 <p class="hero-sub reveal rd2">
-                    From RAG pipelines serving 200+ daily users at IndiGo to SaaS platforms I've built from scratch&mdash;I own the entire stack. Backend infra, AI/ML layer, frontend, deployment.
+                    I build data platforms, machine-learning workflows, and grounded AI products. At IndiGo, my work connected operational systems, reduced pipeline overhead by 40%, and helped 200+ employees use enterprise data through AskPrism.
                 </p>
                 <div class="hero-ctas reveal rd3">
-                    <a href="mailto:taneja.mohit2002.mn@gmail.com" class="btn btn-primary">Get in touch &rarr;</a>
+                    <a href="mailto:taneja.mohit2002.mn@gmail.com" class="btn btn-primary">Discuss a role &rarr;</a>
                     <a href="https://linkedin.com/in/mohittaneja1" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
                     <a href="https://github.com/StarBreaker20" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
                 </div>
                 <div class="hero-stats reveal rd4">
                     <div>
-                        <div class="stat-val">End&#8209;to&#8209;End</div>
-                        <div class="stat-label">Product Delivery</div>
+                        <div class="stat-val">2+ yrs</div>
+                        <div class="stat-label">Data &amp; AI Systems</div>
                     </div>
                     <div>
                         <div class="stat-val">200+</div>
@@ -637,7 +654,7 @@
                     <div class="photo-fallback" style="display:none;">MT</div>
                     <div class="photo-badge">
                         <div class="photo-name">Mohit Taneja</div>
-                        <div class="photo-title">Full-Stack AI Engineer &middot; Delhi</div>
+                        <div class="photo-title">Data Science &amp; Applied AI Engineer &middot; Delhi</div>
                     </div>
                 </div>
             </div>
@@ -648,32 +665,32 @@
 
     <!-- ======== JOURNEY ======== -->
     <section id="journey" class="journey-section">
-        <div class="section-label reveal">The Journey</div>
-        <h2 class="section-title serif reveal rd1">From <em>research&nbsp;labs</em> to<br>production&nbsp;systems.</h2>
-        <p class="section-desc reveal rd2">I started benchmarking LLMs at Siemens. Then I built enterprise AI at India's largest airline. Now I ship my own products.</p>
+        <div class="section-label reveal">Professional Experience</div>
+        <h2 class="section-title serif reveal rd1">Data foundations, <em>applied&nbsp;AI</em>,<br>and dependable delivery.</h2>
+        <p class="section-desc reveal rd2">My trajectory runs from enterprise AI research to airline data engineering and production AI&mdash;with hands-on product work that keeps models connected to real users, data, and operating constraints.</p>
 
         <div class="journey-timeline">
             <div class="journey-item reveal">
-                <div class="journey-when">Jan 26 &ndash; Now</div>
+                <div class="journey-when">Feb 26 &ndash; Present</div>
                 <div class="journey-content">
-                    <div class="journey-role">Independent Builder &amp; Freelancer</div>
-                    <div class="journey-co">Entrepreneurship</div>
+                    <div class="journey-role">Independent AI/ML Engineer</div>
+                    <div class="journey-co">Client &amp; Product Work</div>
                     <ul class="journey-desc">
-                        <li>Building and shipping full SaaS products end-to-end&mdash;architecture, backend, AI layer, frontend, deployment</li>
-                        <li>Trigrr (AI sales coach), HealthFire (healthcare optimizer), ScoutPanels (validation marketplace), and more</li>
-                        <li>Working with clients on AI-first product builds and landing pages</li>
+                        <li>Build AI products and internal tools end to end across backend services, model/API integration, deployment, testing, and handover documentation</li>
+                        <li>Architected an AI-assisted Premiere Pro system with typed plans, editor approval, FastAPI, FFmpeg, multimodal analysis, and MCP integrations</li>
+                        <li>Ship applied AI and full-stack prototypes while engineering around hallucinations, context loss, latency, model cost, and unreliable tool execution</li>
                     </ul>
                 </div>
             </div>
             <div class="journey-item reveal">
-                <div class="journey-when">May 25 &ndash; Aug 25</div>
+                <div class="journey-when">2025</div>
                 <div class="journey-content">
-                    <div class="journey-role">AI Developer (Part-Time)</div>
-                    <div class="journey-co">Tech Baton LLP</div>
+                    <div class="journey-role">AI Developer (Contract)</div>
+                    <div class="journey-co">Tech Baton &middot; Agiliux</div>
                     <ul class="journey-desc">
-                        <li>Built agentic AI systems and AI chatbot for partner company Agilux</li>
-                        <li>Contributed to multiple AI development projects as a freelance developer</li>
-                        <li>End-to-end AI project delivery&mdash;from architecture to deployment</li>
+                        <li>Co-developed an agentic assistant inside an AI-native insurance platform, grounded in internal knowledge and customer data</li>
+                        <li>Built RAG, document-ingestion, and OCR workflows for PDFs and insurance documents</li>
+                        <li>Improved retrieval quality, structured outputs, context handling, and response accuracy where grounding, permissions, and reliability mattered</li>
                     </ul>
                 </div>
             </div>
@@ -683,22 +700,22 @@
                     <div class="journey-role">Data Science Engineer</div>
                     <div class="journey-co">IndiGo (InterGlobe Aviation)</div>
                     <ul class="journey-desc">
-                        <li>Architected AskPrism&mdash;enterprise GenAI chatbot (RAG + LangChain + GPT-4) serving 200+ daily queries across 5 departments</li>
-                        <li>Multi-stage retrieval pipelines with vector embeddings over CDP, AIMS, HR, and Navitaire knowledge bases</li>
-                        <li>AI agent workflows with tool-use and function calling&mdash;45% reduction in manual analyst effort</li>
-                        <li>Optimized Snowflake and Azure Data Factory pipelines&mdash;40% processing overhead cut</li>
+                        <li>Owned the Flight Operations migration from SQL Server to Snowflake as the sole data engineering point of contact</li>
+                        <li>Built Python, PySpark, SQL, Snowflake, and Azure Data Factory pipelines across Flight Operations, AIMS, crew/roster, and Navitaire data, reducing processing overhead by 40%</li>
+                        <li>Co-built AskPrism, a RAG assistant across five business systems used by 200+ employees, cutting resolution time by roughly 60% and manual analyst effort by roughly 45%</li>
+                        <li>Developed pricing and AI-assisted database administration POCs; administered Snowflake RBAC and PII access and supported production reliability</li>
                     </ul>
                 </div>
             </div>
             <div class="journey-item reveal">
-                <div class="journey-when">Feb 24 &ndash; Jul 24</div>
+                <div class="journey-when">May 24 &ndash; Aug 24</div>
                 <div class="journey-content">
-                    <div class="journey-role">AI Researcher</div>
+                    <div class="journey-role">AI Intern</div>
                     <div class="journey-co">Siemens Energy</div>
                     <ul class="journey-desc">
-                        <li>Benchmarked GPT-4, Claude, and open-source LLMs for enterprise automation&mdash;report adopted by senior engineering leadership</li>
-                        <li>Production chatbot with Azure OpenAI + tool-use automating 3+ enterprise workflow pipelines</li>
-                        <li>NLP intent classification pipeline&mdash;89% accuracy on domain-specific industrial queries</li>
+                        <li>Enhanced enterprise chatbot capabilities using Azure, Azure OpenAI, and Assistant APIs</li>
+                        <li>Benchmarked LLM and NLP options across accuracy, cost, and operational complexity and documented the recommendation for engineering leadership</li>
+                        <li>Built automation for 3+ internal workflows and an intent-classification pipeline reaching 89% accuracy on domain-specific queries</li>
                     </ul>
                 </div>
             </div>
@@ -710,8 +727,8 @@
     <!-- ======== PORTAL ======== -->
     <section class="portal-section" id="portal">
         <div class="portal-text">
-            <h2 class="serif reveal">What I've <em>built</em>.</h2>
-            <p class="reveal rd1">Built with many clients, delivering end&#8209;to&#8209;end products. Zero tutorial clones.</p>
+            <h2 class="serif reveal">Evidence over <em>buzzwords</em>.</h2>
+            <p class="reveal rd1">Enterprise outcomes first, followed by selected systems and research with live demos or detailed public case studies.</p>
         </div>
     </section>
 
@@ -719,15 +736,14 @@
 
     <!-- ======== PROJECTS ======== -->
     <section id="projects" class="projects-section">
-        <div class="section-label reveal">Selected Work</div>
-        <h2 class="section-title serif reveal rd1">End&#8209;to&#8209;end <em>products</em></h2>
-        <p class="section-desc reveal rd2">Every project below is live. I built the backend, the AI layer, and the frontend.</p>
+        <div class="section-label reveal">Selected Evidence</div>
+        <h2 class="section-title serif reveal rd1">Work that connects <em>data</em>,<br>models, and users.</h2>
+        <p class="section-desc reveal rd2">Enterprise impact comes first. Independent builds and research follow, with public case studies and live product surfaces where available.</p>
 
         <div class="projects-grid">
 
             <!-- VAULT FX -->
-            <a href="https://www.vaultfxtrading.com" target="_blank" rel="noopener"
-               class="project-card reveal" data-glow>
+            <article class="project-card reveal" data-glow style="order: 4;">
                 <div class="project-info">
                     <span class="project-badge">Client Project &middot; Forex Academy</span>
                     <div class="project-name serif">Vault FX Academy</div>
@@ -740,6 +756,10 @@
                         <span class="tag">Netlify</span>
                         <span class="tag">Responsive</span>
                     </div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://www.vaultfxtrading.com" target="_blank" rel="noopener">Live site &nearr;</a>
+                        <a class="project-link" href="https://github.com/StarBreaker20/vaultfx-academy-case-study" target="_blank" rel="noopener">Case study &nearr;</a>
+                    </div>
                 </div>
                 <div class="project-visual">
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Live trading desk visualization with real-time EUR/USD positions</span></div>
@@ -747,12 +767,10 @@
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Application flow with Tally forms and WhatsApp community integration</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Conversion-focused landing with a risk-first, pay-after-profit offer</span></div>
                 </div>
-                <span class="project-arrow">&nearr;</span>
-            </a>
+            </article>
 
             <!-- TRIGRR -->
-            <a href="https://trgrr.netlify.app" target="_blank" rel="noopener"
-               class="project-card reveal" data-glow>
+            <article class="project-card reveal" data-glow style="order: 5;">
                 <div class="project-info">
                     <span class="project-badge">SaaS Product</span>
                     <div class="project-name serif">Trigrr</div>
@@ -767,6 +785,10 @@
                         <span class="tag">Deepgram</span>
                         <span class="tag">Vapi</span>
                     </div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://trgrr.netlify.app" target="_blank" rel="noopener">Live product &nearr;</a>
+                        <a class="project-link" href="https://github.com/StarBreaker20/trigrr-sales-intelligence-case-study" target="_blank" rel="noopener">Case study &nearr;</a>
+                    </div>
                 </div>
                 <div class="project-visual">
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Call scoring with hesitation, pace, and filler word detection</span></div>
@@ -774,40 +796,41 @@
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Monday briefing dashboard with pipeline and leaderboard</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">AI practice calls simulating real prospect objections</span></div>
                 </div>
-                <span class="project-arrow">&nearr;</span>
-            </a>
+            </article>
 
             <!-- HEALTHFIRE -->
-            <a href="https://healthfire.vercel.app" target="_blank" rel="noopener"
-               class="project-card reveal" data-glow>
+            <article class="project-card reveal" data-glow style="order: 7;">
                 <div class="project-info">
                     <span class="project-badge">AI Platform</span>
                     <div class="project-name serif">HealthFire</div>
                     <div class="project-url">healthfire.vercel.app</div>
-                    <p class="project-desc">AI healthcare cost optimizer. Models real-time ACA subsidy scenarios using actual IRS/HHS formulas with MAGI optimization, Roth conversion ladder analysis, and Social Security bridge planning. LLM layer translates outputs into plain-language guidance.</p>
+                    <p class="project-desc">A deterministic Marketplace subsidy scenario simulator that connects a guided product experience to a Python/FastAPI calculation engine, versioned regulatory data, saved scenarios, and plain-language results.</p>
                     <div class="project-tags">
                         <span class="tag">Next.js 14</span>
                         <span class="tag">Python</span>
                         <span class="tag">FastAPI</span>
-                        <span class="tag">LLM</span>
-                        <span class="tag">IRS/HHS</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Regression Tests</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://healthfire.vercel.app" target="_blank" rel="noopener">Live demo &nearr;</a>
+                        <a class="project-link" href="https://github.com/StarBreaker20/healthfire-case-study" target="_blank" rel="noopener">Case study &nearr;</a>
                     </div>
                 </div>
                 <div class="project-visual">
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Interactive subsidy cliff detection and CSR optimization</span></div>
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">CPA-ready PDF exports with zero-knowledge encryption</span></div>
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Multi-household income scenario modeling</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Deterministic, explainable calculation path with validated request and response models</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Versioned regulatory reference data and golden regression cases</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Authentication, row-level access patterns, rate limiting, and audit/security logging foundations</span></div>
                 </div>
-                <span class="project-arrow">&nearr;</span>
-            </a>
+            </article>
 
             <!-- PREMIERE PLUGIN -->
-            <div class="project-card reveal" data-glow>
+            <article class="project-card reveal" data-glow style="order: 3;">
                 <div class="project-info">
                     <span class="project-badge">AI Plugin &middot; Premiere Pro</span>
                     <div class="project-name serif">Agentic Premiere</div>
-                    <div class="project-url">Deployed to client server &middot; Not publicly accessible</div>
-                    <p class="project-desc">Agentic video editing inside Premiere Pro. Gemini Vision analyzes footage frame-by-frame, suggests and auto-inserts B-roll from Pexels, and generates brand-consistent edit recommendations from a unified Brand DNA context.</p>
+                    <div class="project-url">Advanced prototype &middot; Public engineering case study</div>
+                    <p class="project-desc">AI-assisted editing inside Adobe Premiere Pro, designed around a hard trust boundary: the model proposes a typed edit plan, the editor approves it, and the plugin applies and verifies only that bounded plan.</p>
                     <div class="project-tags">
                         <span class="tag">Gemini Vision</span>
                         <span class="tag">UXP SDK</span>
@@ -815,17 +838,44 @@
                         <span class="tag">FFmpeg</span>
                         <span class="tag">MCP</span>
                     </div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://github.com/StarBreaker20/agentic-premiere-case-study" target="_blank" rel="noopener">Architecture case study &nearr;</a>
+                    </div>
                 </div>
                 <div class="project-visual">
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">MCP servers pulling tokens from Figma, style from YouTube, stock from Pexels</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">UXP panel, Python/FastAPI services, FFmpeg, Gemini Vision, and MCP-backed tool integrations</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Token budget model with context caching&mdash;under $30/month</span></div>
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Hub-and-spoke UXP architecture with sandboxed JS execution</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">2,101 automated tests across the plugin, contracts, middleware, and host-specific workflows</span></div>
                 </div>
-            </div>
+            </article>
+
+            <!-- SG-GNN RESEARCH -->
+            <article class="project-card reveal" data-glow style="order: 6;">
+                <div class="project-info">
+                    <span class="project-badge">Machine Learning Research &middot; Graph Learning</span>
+                    <div class="project-name serif">SG-GNN</div>
+                    <div class="project-url">Spike-gated graph neural network research</div>
+                    <p class="project-desc">A ten-stage experimental program testing whether Leaky Integrate-and-Fire neurons can learn hard binary edge decisions before graph message passing. The work compares spike gates with sigmoid attention, NeuralSparse, Hard Concrete, and true chemical bonds across QM9 and ZINC.</p>
+                    <div class="project-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Graph Neural Networks</span>
+                        <span class="tag">Neuromorphic ML</span>
+                        <span class="tag">QM9</span>
+                        <span class="tag">ZINC</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://github.com/StarBreaker20/sg-gnn-research-case-study" target="_blank" rel="noopener">Research case study &nearr;</a>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Spike gate reached a 1.3% MAE gap to soft attention while selecting 73% fewer edges in the QM9 ablation</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Within 0.3% of NeuralSparse on the controlled ZINC comparison while selecting fewer edges</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Reproducible baselines, ablations, fixed-seed runs, comparison tables, and preserved negative results</span></div>
+                </div>
+            </article>
 
             <!-- SCOUTPANELS -->
-            <a href="https://scoutpanels.com" target="_blank" rel="noopener"
-               class="project-card reveal" data-glow>
+            <article class="project-card reveal" data-glow style="order: 8;">
                 <div class="project-info">
                     <span class="project-badge">B2B Marketplace</span>
                     <div class="project-name serif">ScoutPanels</div>
@@ -836,17 +886,20 @@
                         <span class="tag">ML Matching</span>
                         <span class="tag">Lean Startup</span>
                     </div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://scoutpanels.com" target="_blank" rel="noopener">Live product &nearr;</a>
+                        <a class="project-link" href="https://github.com/StarBreaker20/scoutpanels-case-study" target="_blank" rel="noopener">Case study &nearr;</a>
+                    </div>
                 </div>
                 <div class="project-visual">
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">ML-based matching with ICP users from the panel</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Role, domain, company-context, and product-stage matching model</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">50+ customer discovery interviews, 15+ validators onboarded</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Structured friction and time-to-value metrics</span></div>
                 </div>
-                <span class="project-arrow">&nearr;</span>
-            </a>
+            </article>
 
             <!-- ASKPRISM — INDIGO -->
-            <div class="project-card reveal" data-glow>
+            <article class="project-card reveal" data-glow style="order: 2;">
                 <div class="project-info">
                     <span class="project-badge">Enterprise AI &middot; IndiGo</span>
                     <div class="project-name serif">AskPrism</div>
@@ -865,32 +918,33 @@
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">AI agent workflows with tool-use automating cross-system lookups</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">RBAC governance for AI-accessible knowledge stores</span></div>
                 </div>
-            </div>
+            </article>
 
-            <!-- SIEMENS AI -->
-            <div class="project-card reveal" data-glow>
+            <!-- INDIGO FLIGHT OPERATIONS DATA PLATFORM -->
+            <article class="project-card reveal" data-glow style="order: 1;">
                 <div class="project-info">
-                    <span class="project-badge">AI Research &middot; Siemens Energy</span>
-                    <div class="project-name serif">Enterprise AI Automation</div>
-                    <div class="project-url">Internal R&D &middot; Siemens Energy</div>
-                    <p class="project-desc">Production AI chatbot integrating Azure OpenAI with tool-use, automating 3+ enterprise workflow pipelines. Built NLP intent classification and entity extraction pipeline achieving 89% accuracy on domain-specific industrial queries. Benchmarking report adopted by senior engineering leadership.</p>
+                    <span class="project-badge">Enterprise Data Engineering &middot; IndiGo</span>
+                    <div class="project-name serif">Flight Operations Data Platform</div>
+                    <div class="project-url">Internal production platform &middot; IndiGo</div>
+                    <p class="project-desc">Owned the Flight Operations migration from SQL Server to Snowflake and translated operational requirements into procedures, functions, pipelines, and Dynamic Tables. Connected AIMS, crew and roster, Flight Operations, and Navitaire sales data for delay analysis, prediction, forecasting, and pricing POCs.</p>
                     <div class="project-tags">
-                        <span class="tag">Azure OpenAI</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Intent Classification</span>
-                        <span class="tag">Few-shot</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">PySpark</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Snowflake</span>
+                        <span class="tag">Azure Data Factory</span>
+                        <span class="tag">Power BI</span>
                     </div>
                 </div>
                 <div class="project-visual">
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Benchmarked GPT-4, Claude, and open-source LLMs for enterprise use</span></div>
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Prompt chaining and few-shot prompting for industrial NLP</span></div>
-                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Technical recommendation report adopted by leadership</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Reduced processing overhead by 40% across enterprise data pipelines</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Production patterns using Streams, Dynamic Tables, materialized views, Time Travel, and Jenkins deployments</span></div>
+                    <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Source-to-target validation, incident investigation, RBAC, grants, revocations, and controlled PII access</span></div>
                 </div>
-            </div>
+            </article>
 
             <!-- CONTEXTLAYER -->
-            <a href="https://contextlayerio.netlify.app" target="_blank" rel="noopener"
-               class="project-card reveal" data-glow>
+            <article class="project-card reveal" data-glow style="order: 9;">
                 <div class="project-info">
                     <span class="project-badge">AI Tool</span>
                     <div class="project-name serif">ContextLayer</div>
@@ -901,14 +955,16 @@
                         <span class="tag">Prompt Engineering</span>
                         <span class="tag">PDF/Markdown</span>
                     </div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://contextlayerio.netlify.app" target="_blank" rel="noopener">Live tool &nearr;</a>
+                    </div>
                 </div>
                 <div class="project-visual">
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Document upload for SOW, project docs, meeting notes</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">Multi-LLM support&mdash;Claude, ChatGPT, Copilot</span></div>
                     <div class="project-highlight"><span class="ph-dot"></span><span class="ph-text">No signup required, free to use</span></div>
                 </div>
-                <span class="project-arrow">&nearr;</span>
-            </a>
+            </article>
 
         </div>
     </section>
@@ -923,23 +979,23 @@
         <div class="skills-grid" style="margin-top: 56px;">
             <div class="skill-card reveal">
                 <div class="skill-icon">&#10038;</div>
-                <div class="skill-cat">GenAI & LLMs</div>
-                <div class="skill-list">GPT-4, Gemini 1.5 Pro, Azure OpenAI, LangChain, LangGraph, RAG, AI Agents, Function Calling, Embeddings, FAISS, Pinecone, Context Caching</div>
+                <div class="skill-cat">Data Engineering</div>
+                <div class="skill-list">Python, SQL, PySpark, Snowflake, Azure Data Factory, ETL/ELT, DBT, Dynamic Tables, Streams, Time Travel, Data Warehousing</div>
             </div>
             <div class="skill-card reveal rd1">
                 <div class="skill-icon">&#9881;</div>
-                <div class="skill-cat">ML & AI</div>
-                <div class="skill-list">TensorFlow, PyTorch, Scikit-learn, Transformers, CNN, NLP, Semantic Search, Intent Recognition, Fine-tuning</div>
+                <div class="skill-cat">Machine Learning</div>
+                <div class="skill-list">PyTorch, TensorFlow, Scikit-learn, Hugging Face Transformers, Deep Learning, CNNs, NLP, Graph Neural Networks, Fine-tuning</div>
             </div>
             <div class="skill-card reveal rd2">
                 <div class="skill-icon">&#10148;</div>
-                <div class="skill-cat">Full-Stack</div>
-                <div class="skill-list">Python, TypeScript, Node.js, SQL, FastAPI, Next.js, Streamlit, UXP SDK, REST APIs, Git</div>
+                <div class="skill-cat">Applied AI</div>
+                <div class="skill-list">RAG, LLM orchestration, tool calling, multi-agent workflows, Azure OpenAI, OpenAI, Gemini, Claude, context engineering, structured outputs</div>
             </div>
             <div class="skill-card reveal rd3">
                 <div class="skill-icon">&#9729;</div>
-                <div class="skill-cat">Cloud & Data</div>
-                <div class="skill-list">Azure (OpenAI, Data Factory, Storage), Snowflake, ETL/ELT, DBT, PostgreSQL, Redis, Data Warehousing</div>
+                <div class="skill-cat">Evaluation &amp; Delivery</div>
+                <div class="skill-list">Comparative benchmarking, ROUGE, BLEU, METEOR, error analysis, FastAPI, REST APIs, Docker, Azure, PostgreSQL, Git, Next.js</div>
             </div>
         </div>
     </section>
@@ -951,7 +1007,7 @@
         <div class="section-label reveal">Education</div>
         <div class="edu-card reveal rd1">
             <div>
-                <div class="edu-degree">B.Tech, Computer Science & Engineering</div>
+                <div class="edu-degree">B.Tech, Computer Science &amp; Engineering</div>
                 <div class="edu-school">Maharaja Agrasen Institute of Technology, GGSIPU</div>
                 <div class="edu-meta">
                     2020&ndash;2024<br>
@@ -969,8 +1025,8 @@
 
     <!-- ======== CTA ======== -->
     <section class="cta-section">
-        <h2 class="serif reveal">Let's <em>build</em> something.</h2>
-        <p class="reveal rd1">Have a project? I'm open to freelance work, contract roles, and interesting collaborations.</p>
+        <h2 class="serif reveal">Looking for a data or <em>AI&nbsp;engineer</em>?</h2>
+        <p class="reveal rd1">I'm open to full-time Data Science, Applied AI, and AI/ML engineering roles where reliable systems and measurable outcomes matter.</p>
         <div class="cta-buttons reveal rd2">
             <a href="mailto:taneja.mohit2002.mn@gmail.com" class="btn btn-primary">taneja.mohit2002.mn@gmail.com</a>
             <a href="https://linkedin.com/in/mohittaneja1" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
@@ -985,7 +1041,7 @@
                 <a href="https://linkedin.com/in/mohittaneja1" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://github.com/StarBreaker20" target="_blank" rel="noopener">GitHub</a>
             </div>
-            <small>&copy; 2025 Mohit Taneja</small>
+            <small>&copy; 2026 Mohit Taneja</small>
         </div>
     </footer>
 
