@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit Taneja — Applied AI &amp; Data Engineer</title>
-    <meta name="description" content="Mohit Taneja is an Applied AI and Data Engineer building reliable data platforms, production AI systems, and agentic workflows.">
+    <title>Mohit Taneja — Data Science, Applied AI &amp; Data Engineering</title>
+    <meta name="description" content="Mohit Taneja works across Data Science, Applied AI, and Data Engineering, building reliable data platforms, governed AI systems, and production machine-learning workflows.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
@@ -291,6 +291,43 @@
         .journey-desc li::before {
             content: ''; position: absolute; left: 0; top: 10px;
             width: 5px; height: 5px; border-radius: 50%; background: var(--border);
+        }
+        .trajectory-grid {
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px; align-items: start;
+        }
+        .trajectory-column {
+            background: rgba(17,17,20,0.72); border: 1px solid var(--border);
+            border-radius: 20px; padding: 32px;
+        }
+        .trajectory-column.personal {
+            background: linear-gradient(150deg, rgba(17,17,20,0.9), rgba(212,147,90,0.055));
+        }
+        .trajectory-heading {
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            padding-bottom: 22px; border-bottom: 1px solid var(--border);
+        }
+        .trajectory-heading h3 { font-size: 22px; letter-spacing: -0.02em; }
+        .trajectory-heading span {
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            color: var(--accent); font-size: 10px; letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .trajectory-role {
+            padding: 28px 0; border-bottom: 1px solid var(--border);
+        }
+        .trajectory-role:last-child { border-bottom: 0; padding-bottom: 4px; }
+        .trajectory-date {
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            font-size: 11px; color: var(--text-3); margin-bottom: 10px;
+        }
+        .trajectory-role h4 { font-size: 19px; letter-spacing: -0.01em; margin-bottom: 4px; }
+        .trajectory-company { color: var(--accent); font-size: 14px; margin-bottom: 16px; }
+        .trajectory-points { color: var(--text-2); font-size: 14px; line-height: 1.68; }
+        .trajectory-points li { position: relative; padding-left: 16px; margin-bottom: 10px; }
+        .trajectory-points li::before {
+            content: ''; position: absolute; left: 0; top: 9px;
+            width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
         }
 
         /* ============================
@@ -607,6 +644,7 @@
             .edu-card { grid-template-columns: 1fr; }
             .hero-stats { gap: 32px; }
             .mindset-intro { grid-template-columns: 1fr; gap: 20px; }
+            .trajectory-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
             nav { padding: 0 20px; }
@@ -663,11 +701,11 @@
             <div>
                 <div class="hero-eyebrow reveal">
                     <span class="status-dot"></span>
-                    Open to Applied AI &amp; Data Engineering roles
+                    Open to Data Science, Applied AI &amp; Data Engineering roles
                 </div>
-                <h1 class="serif reveal rd1">Applied AI &amp; Data Engineer building <em>reliable&nbsp;production systems.</em></h1>
+                <h1 class="serif reveal rd1">Data Science, Applied AI &amp; Data Engineering&mdash;<em>built for production.</em></h1>
                 <p class="hero-sub reveal rd2">
-                    1.5+ years of enterprise experience at IndiGo and Siemens Energy&mdash;connecting legacy systems with AI, delivering critical migrations, and turning operational data into scalable solutions for analytics, automation, and pricing optimization.
+                    Curious by nature and ambitious about building products, I like taking APIs, data flows, and models apart to understand why they work&mdash;and where they fail. I bring that mindset to airline data platforms, pricing models, machine learning, and observable, governed AI systems with evaluation, human oversight, and production reliability.
                 </p>
                 <div class="hero-ctas reveal rd3">
                     <a href="mailto:taneja.mohit2002.mn@gmail.com" class="btn btn-primary">Discuss a role &rarr;</a>
@@ -696,7 +734,7 @@
                     <div class="photo-fallback" style="display:none;">MT</div>
                     <div class="photo-badge">
                         <div class="photo-name">Mohit Taneja</div>
-                        <div class="photo-title">Applied AI &amp; Data Engineer &middot; Delhi</div>
+                        <div class="photo-title">Data Science &middot; Applied AI &middot; Data Engineering</div>
                     </div>
                 </div>
             </div>
@@ -707,59 +745,76 @@
 
     <!-- ======== JOURNEY ======== -->
     <section id="journey" class="journey-section">
-        <div class="section-label reveal">Professional Experience</div>
-        <h2 class="section-title serif reveal rd1">Data foundations, <em>applied&nbsp;AI</em>,<br>and dependable delivery.</h2>
-        <p class="section-desc reveal rd2">My trajectory runs from enterprise AI research to airline data engineering and production AI&mdash;with hands-on product work that keeps models connected to real users, data, and operating constraints.</p>
+        <div class="section-label reveal">Experience &amp; Independent Work</div>
+        <h2 class="section-title serif reveal rd1">Two tracks, <em>one&nbsp;trajectory.</em></h2>
+        <p class="section-desc reveal rd2">My professional track is grounded in enterprise data and AI systems. In parallel, my independent track has pushed me to build products end to end, work directly with clients, and develop the judgment needed to ship AI responsibly.</p>
 
-        <div class="journey-timeline">
-            <div class="journey-item reveal">
-                <div class="journey-when">Feb 26 &ndash; Present</div>
-                <div class="journey-content">
-                    <div class="journey-role">Independent AI/ML Engineer</div>
-                    <div class="journey-co">Client &amp; Product Work</div>
-                    <ul class="journey-desc">
-                        <li>Build AI products and internal tools end to end across backend services, model/API integration, deployment, testing, and handover documentation</li>
-                        <li>Architected an AI-assisted Premiere Pro system with typed plans, editor approval, FastAPI, FFmpeg, multimodal analysis, and MCP integrations</li>
-                        <li>Ship applied AI and full-stack prototypes while engineering around hallucinations, context loss, latency, model cost, and unreliable tool execution</li>
-                    </ul>
+        <div class="trajectory-grid">
+            <div class="trajectory-column reveal">
+                <div class="trajectory-heading">
+                    <h3>Professional trajectory</h3>
+                    <span>Enterprise roles</span>
                 </div>
+
+                <article class="trajectory-role">
+                    <div class="trajectory-date">AUG 2024 &ndash; JAN 2026 &middot; GURUGRAM</div>
+                    <h4>Data Engineer</h4>
+                    <div class="trajectory-company">IndiGo (InterGlobe Aviation Ltd)</div>
+                    <ul class="trajectory-points">
+                        <li>Owned the Flight Operations migration from SQL Server to Snowflake as the sole data engineering point of contact, translating business requirements into procedures, functions, pipelines, and Dynamic Tables and delivering on schedule.</li>
+                        <li>Used Python, PySpark, and SQL for distributed processing; built Snowflake and Azure Data Factory pipelines across enterprise systems and data lakes, reducing processing overhead by 40%.</li>
+                        <li>Integrated Flight Operations, AIMS, crew/roster, and Navitaire sales data for flight-delay analysis, prediction, forecasting, and downstream data science; validated datasets and investigated source-to-target quality issues.</li>
+                        <li>Developed pricing and AI-assisted database administration POCs, testing models on Navitaire sales data for ticket and ancillary-bundle pricing, including XL seats and priority services.</li>
+                        <li>Co-built AskPrism, a RAG assistant connecting five business systems and used by 200+ employees, reducing resolution time by roughly 60% and manual analyst effort by roughly 45%.</li>
+                        <li>Administered Snowflake grants, revocations, RBAC, and PII access; supported database observability, controlled access, and production incident troubleshooting.</li>
+                        <li>Applied stored procedures, Dynamic Tables, materialized views, Streams, Time Travel, and Jenkins deployments; delivered Power BI dashboards and contributed to Tableau visualizations.</li>
+                    </ul>
+                </article>
+
+                <article class="trajectory-role">
+                    <div class="trajectory-date">FEB 2024 &ndash; JUL 2024 &middot; GURUGRAM</div>
+                    <h4>AI Researcher (Internship)</h4>
+                    <div class="trajectory-company">Siemens Energy</div>
+                    <ul class="trajectory-points">
+                        <li>Benchmarked enterprise LLM and NLP options across accuracy, cost, and operational complexity and authored the recommendation adopted by senior engineering leadership.</li>
+                        <li>Built a production assistant with Azure OpenAI and Assistant APIs that automated 3+ engineering workflows at 89% intent-classification accuracy.</li>
+                        <li>Used Azure and Copilot to integrate new chatbot capabilities and accelerate development and workflow automation.</li>
+                    </ul>
+                </article>
             </div>
-            <div class="journey-item reveal">
-                <div class="journey-when">2025</div>
-                <div class="journey-content">
-                    <div class="journey-role">AI Developer (Contract)</div>
-                    <div class="journey-co">Tech Baton &middot; Agiliux</div>
-                    <ul class="journey-desc">
-                        <li>Co-developed an agentic assistant inside an AI-native insurance platform, grounded in internal knowledge and customer data</li>
-                        <li>Built RAG, document-ingestion, and OCR workflows for PDFs and insurance documents</li>
-                        <li>Improved retrieval quality, structured outputs, context handling, and response accuracy where grounding, permissions, and reliability mattered</li>
-                    </ul>
+
+            <div class="trajectory-column personal reveal rd1">
+                <div class="trajectory-heading">
+                    <h3>Independent trajectory</h3>
+                    <span>Products &amp; clients</span>
                 </div>
-            </div>
-            <div class="journey-item reveal">
-                <div class="journey-when">Aug 24 &ndash; Jan 26</div>
-                <div class="journey-content">
-                    <div class="journey-role">Data Engineer</div>
-                    <div class="journey-co">IndiGo (InterGlobe Aviation)</div>
-                    <ul class="journey-desc">
-                        <li>Owned the Flight Operations migration from SQL Server to Snowflake as the sole data engineering point of contact</li>
-                        <li>Built Python, PySpark, SQL, Snowflake, and Azure Data Factory pipelines across Flight Operations, AIMS, crew/roster, and Navitaire data, reducing processing overhead by 40%</li>
-                        <li>Co-built AskPrism, a RAG assistant across five business systems used by 200+ employees, cutting resolution time by roughly 60% and manual analyst effort by roughly 45%</li>
-                        <li>Developed pricing and AI-assisted database administration POCs; administered Snowflake RBAC and PII access and supported production reliability</li>
+
+                <article class="trajectory-role">
+                    <div class="trajectory-date">FEB 2026 &ndash; PRESENT &middot; REMOTE</div>
+                    <h4>Independent AI/ML Engineer</h4>
+                    <div class="trajectory-company">Client &amp; Product Work</div>
+                    <ul class="trajectory-points">
+                        <li>Build AI-powered products and workflow automation systems using LLMs, APIs, tool calling, multi-agent orchestration, and human-in-the-loop architecture.</li>
+                        <li>Developed an AI-assisted Adobe Premiere Pro system combining model reasoning with deterministic automation, external processing services, and editor-controlled execution.</li>
+                        <li>Designed specialized-agent workflows with persistent context, tool access, state management, fallback paths, structured outputs, and reusable decision memory.</li>
+                        <li>Built integrations across REST APIs, MCP servers, OpenAI, Gemini, Claude, Codex, media-processing services, and creative tools using Python and TypeScript.</li>
+                        <li>Designed evaluation and control loops with structured tests, traces, human approval, fallback behavior, and multi-model review to improve AI observability, governance, and reliability.</li>
+                        <li>Worked through real production constraints including hallucinations, context loss, API limits, model cost, latency, unreliable tool execution, and nondeterministic output.</li>
                     </ul>
-                </div>
-            </div>
-            <div class="journey-item reveal">
-                <div class="journey-when">Feb 24 &ndash; Jul 24</div>
-                <div class="journey-content">
-                    <div class="journey-role">AI Intern</div>
-                    <div class="journey-co">Siemens Energy</div>
-                    <ul class="journey-desc">
-                        <li>Enhanced enterprise chatbot capabilities using Azure, Azure OpenAI, and Assistant APIs</li>
-                        <li>Benchmarked LLM and NLP options across accuracy, cost, and operational complexity and documented the recommendation for engineering leadership</li>
-                        <li>Built automation for 3+ internal workflows and an intent-classification pipeline reaching 89% accuracy on domain-specific queries</li>
+                </article>
+
+                <article class="trajectory-role">
+                    <div class="trajectory-date">2025 &middot; REMOTE</div>
+                    <h4>AI Developer (Contract)</h4>
+                    <div class="trajectory-company">Tech Baton &middot; Agiliux</div>
+                    <ul class="trajectory-points">
+                        <li>Co-developed an agentic AI chatbot inside Agiliux, an AI-native insurance platform spanning commercial and personal insurance workflows.</li>
+                        <li>Built RAG and knowledge-retrieval pipelines grounded in client and insurance-domain data.</li>
+                        <li>Contributed to document-ingestion and OCR workflows that extracted structured information from PDFs and insurance documents.</li>
+                        <li>Connected internal knowledge and customer data to the conversational layer while maintaining relevant context, permissions, and structured outputs.</li>
+                        <li>Debugged retrieval quality, document extraction, context handling, and response accuracy where grounding and reliability mattered more than fluent generation.</li>
                     </ul>
-                </div>
+                </article>
             </div>
         </div>
     </section>
@@ -818,7 +873,7 @@
         <div class="projects-grid">
 
             <!-- VAULT FX -->
-            <article class="project-card reveal" data-glow style="order: 4;">
+            <article class="project-card reveal" data-glow style="order: 5;">
                 <div class="project-info">
                     <span class="project-badge">Client Project &middot; Forex Academy</span>
                     <div class="project-name serif">Vault FX Academy</div>
@@ -845,7 +900,7 @@
             </article>
 
             <!-- TRIGRR -->
-            <article class="project-card reveal" data-glow style="order: 5;">
+            <article class="project-card reveal" data-glow style="order: 6;">
                 <div class="project-info">
                     <span class="project-badge">SaaS Product</span>
                     <div class="project-name serif">Trigrr</div>
@@ -925,7 +980,7 @@
             </article>
 
             <!-- SG-GNN RESEARCH -->
-            <article class="project-card reveal" data-glow style="order: 6;">
+            <article class="project-card reveal" data-glow style="order: 4;">
                 <div class="project-info">
                     <span class="project-badge">Machine Learning Research &middot; Graph Learning</span>
                     <div class="project-name serif">SG-GNN</div>
@@ -1059,18 +1114,18 @@
             </div>
             <div class="skill-card reveal rd1">
                 <div class="skill-icon">&#9881;</div>
-                <div class="skill-cat">Machine Learning</div>
-                <div class="skill-list">PyTorch, TensorFlow, Scikit-learn, Hugging Face Transformers, Deep Learning, CNNs, NLP, Graph Neural Networks, Fine-tuning</div>
+                <div class="skill-cat">Data Science &amp; ML</div>
+                <div class="skill-list">Python, Pandas, NumPy, Scikit-learn, PyTorch, TensorFlow, Hugging Face Transformers, NLP, Deep Learning, GNNs, Prediction, Forecasting, Experiment Analysis</div>
             </div>
             <div class="skill-card reveal rd2">
                 <div class="skill-icon">&#10148;</div>
-                <div class="skill-cat">Applied AI</div>
-                <div class="skill-list">RAG, LLM orchestration, tool calling, multi-agent workflows, Azure OpenAI, OpenAI, Gemini, Claude, context engineering, structured outputs</div>
+                <div class="skill-cat">Applied AI &amp; GenAI</div>
+                <div class="skill-list">LLMs, RAG, LangGraph, LangChain, Claude Agent SDK, OpenAI APIs, Assistant APIs, FastMCP, MCP, Tool Orchestration, Knowledge Grounding, Context Engineering, Human-in-the-Loop Automation</div>
             </div>
             <div class="skill-card reveal rd3">
                 <div class="skill-icon">&#9729;</div>
-                <div class="skill-cat">Evaluation &amp; Delivery</div>
-                <div class="skill-list">Comparative benchmarking, ROUGE, BLEU, METEOR, error analysis, FastAPI, REST APIs, Docker, Azure, PostgreSQL, Git, Next.js</div>
+                <div class="skill-cat">AI Evaluation, Observability &amp; Governance</div>
+                <div class="skill-list">MLflow, Braintrust, Langfuse, Tracing, Benchmarking, ROUGE, BLEU, METEOR, Error Analysis, Accuracy/Cost Trade-offs, RBAC, PII Controls, Human Approval, Auditability</div>
             </div>
         </div>
     </section>

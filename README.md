@@ -1,4 +1,4 @@
-# Mohit Taneja — Data Science & Applied AI Portfolio
+# Mohit Taneja — Data Science, Applied AI & Data Engineering Portfolio
 
 A static, career-focused portfolio for selected enterprise data engineering,
 machine-learning research, applied AI, and end-to-end product work.
@@ -11,6 +11,8 @@ machine-learning research, applied AI, and end-to-end product work.
 
 - Professional experience across applied AI, data engineering, and product
   development
+- Parallel professional and independent trajectories with detailed role-level
+  outcomes and responsibilities
 - IndiGo Flight Operations and AskPrism outcomes, followed by selected AI,
   research, SaaS, healthcare, video, marketplace, and client projects
 - Technical strengths across Python, TypeScript, LLM applications, data
