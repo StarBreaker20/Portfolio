@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit Taneja — Data Science &amp; Applied AI Engineer</title>
-    <meta name="description" content="Mohit Taneja is a Data Science and Applied AI Engineer building production data platforms, RAG systems, machine-learning workflows, and reliable AI products.">
+    <title>Mohit Taneja — Applied AI &amp; Data Engineer</title>
+    <meta name="description" content="Mohit Taneja is an Applied AI and Data Engineer building reliable data platforms, production AI systems, and agentic workflows.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
@@ -37,6 +37,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
+        section { scroll-margin-top: 80px; }
         .serif { font-family: 'Playfair Display', Georgia, serif; }
         a { color: inherit; text-decoration: none; }
         ul { list-style: none; }
@@ -290,6 +291,44 @@
         .journey-desc li::before {
             content: ''; position: absolute; left: 0; top: 10px;
             width: 5px; height: 5px; border-radius: 50%; background: var(--border);
+        }
+
+        /* ============================
+           BUILDER MINDSET
+           ============================ */
+        .mindset-section {
+            padding: 40px 40px 140px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .mindset-intro {
+            display: grid; grid-template-columns: 0.85fr 1.15fr;
+            gap: 64px; align-items: end; margin-bottom: 48px;
+        }
+        .mindset-intro .section-title { margin-bottom: 0; }
+        .mindset-intro .section-desc { margin-bottom: 0; max-width: 620px; }
+        .mindset-grid {
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
+        }
+        .mindset-card {
+            background: linear-gradient(145deg, var(--surface), rgba(26,26,30,0.72));
+            border: 1px solid var(--border); border-radius: 18px;
+            padding: 32px; min-height: 220px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .mindset-card:hover {
+            transform: translateY(-4px); border-color: rgba(212,147,90,0.22);
+            box-shadow: 0 18px 42px rgba(0,0,0,0.22);
+        }
+        .mindset-number {
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            color: var(--accent); font-size: 12px; letter-spacing: 0.08em;
+            margin-bottom: 28px;
+        }
+        .mindset-card h3 {
+            font-size: 21px; letter-spacing: -0.02em; margin-bottom: 12px;
+        }
+        .mindset-card p {
+            color: var(--text-2); font-size: 15px; line-height: 1.75;
         }
 
         /* ============================
@@ -567,6 +606,7 @@
             .journey-when { text-align: left; }
             .edu-card { grid-template-columns: 1fr; }
             .hero-stats { gap: 32px; }
+            .mindset-intro { grid-template-columns: 1fr; gap: 20px; }
         }
         @media (max-width: 600px) {
             nav { padding: 0 20px; }
@@ -576,13 +616,15 @@
             .hero-sub { font-size: 15px; }
             .hero-stats { flex-direction: column; gap: 16px; }
             .hero-photo { width: 180px; height: 230px; }
-            .journey-section, .projects-section, .skills-section, .edu-section,
+            .journey-section, .mindset-section, .projects-section, .skills-section, .edu-section,
             .cta-section { padding-left: 20px; padding-right: 20px; }
             footer { padding-left: 20px; padding-right: 20px; }
             .divider { padding: 0 20px; }
             .project-info { padding: 28px; }
             .project-visual { padding: 0 28px 28px; }
             .project-name { font-size: 24px; }
+            .mindset-grid { grid-template-columns: 1fr; }
+            .mindset-card { min-height: 0; padding: 26px; }
             .skills-grid { grid-template-columns: 1fr; }
             .skill-card { padding: 24px; }
             .edu-card { padding: 28px; }
@@ -605,7 +647,7 @@
     <div class="nav-inner">
         <div class="nav-logo">M<span>.</span>T</div>
         <div class="nav-links">
-            <a href="#journey">Journey</a>
+            <a href="#journey">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="mailto:taneja.mohit2002.mn@gmail.com" class="nav-cta">Contact</a>
@@ -621,11 +663,11 @@
             <div>
                 <div class="hero-eyebrow reveal">
                     <span class="status-dot"></span>
-                    Open to Data Science &amp; Applied AI roles
+                    Open to Applied AI &amp; Data Engineering roles
                 </div>
-                <h1 class="serif reveal rd1">Data science for <em>real&nbsp;systems</em>,<br>from pipelines to production AI.</h1>
+                <h1 class="serif reveal rd1">Applied AI &amp; Data Engineer building <em>reliable&nbsp;production systems.</em></h1>
                 <p class="hero-sub reveal rd2">
-                    I build data platforms, machine-learning workflows, and grounded AI products. At IndiGo, my work connected operational systems, reduced pipeline overhead by 40%, and helped 200+ employees use enterprise data through AskPrism.
+                    1.5+ years of enterprise experience at IndiGo and Siemens Energy&mdash;connecting legacy systems with AI, delivering critical migrations, and turning operational data into scalable solutions for analytics, automation, and pricing optimization.
                 </p>
                 <div class="hero-ctas reveal rd3">
                     <a href="mailto:taneja.mohit2002.mn@gmail.com" class="btn btn-primary">Discuss a role &rarr;</a>
@@ -634,8 +676,8 @@
                 </div>
                 <div class="hero-stats reveal rd4">
                     <div>
-                        <div class="stat-val">2+ yrs</div>
-                        <div class="stat-label">Data &amp; AI Systems</div>
+                        <div class="stat-val">1.5+ yrs</div>
+                        <div class="stat-label">Enterprise Experience</div>
                     </div>
                     <div>
                         <div class="stat-val">200+</div>
@@ -654,7 +696,7 @@
                     <div class="photo-fallback" style="display:none;">MT</div>
                     <div class="photo-badge">
                         <div class="photo-name">Mohit Taneja</div>
-                        <div class="photo-title">Data Science &amp; Applied AI Engineer &middot; Delhi</div>
+                        <div class="photo-title">Applied AI &amp; Data Engineer &middot; Delhi</div>
                     </div>
                 </div>
             </div>
@@ -697,7 +739,7 @@
             <div class="journey-item reveal">
                 <div class="journey-when">Aug 24 &ndash; Jan 26</div>
                 <div class="journey-content">
-                    <div class="journey-role">Data Science Engineer</div>
+                    <div class="journey-role">Data Engineer</div>
                     <div class="journey-co">IndiGo (InterGlobe Aviation)</div>
                     <ul class="journey-desc">
                         <li>Owned the Flight Operations migration from SQL Server to Snowflake as the sole data engineering point of contact</li>
@@ -708,7 +750,7 @@
                 </div>
             </div>
             <div class="journey-item reveal">
-                <div class="journey-when">May 24 &ndash; Aug 24</div>
+                <div class="journey-when">Feb 24 &ndash; Jul 24</div>
                 <div class="journey-content">
                     <div class="journey-role">AI Intern</div>
                     <div class="journey-co">Siemens Energy</div>
@@ -719,6 +761,39 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ======== BUILDER MINDSET ======== -->
+    <section id="mindset" class="mindset-section">
+        <div class="mindset-intro">
+            <div>
+                <div class="section-label reveal">Builder Mindset</div>
+                <h2 class="section-title serif reveal rd1">I want to understand <em>why</em> it works.</h2>
+            </div>
+            <p class="section-desc reveal rd2">I am ambitious about building useful systems and eventually starting a company of my own. That goal has made me as interested in the path to adoption as I am in the architecture behind the product.</p>
+        </div>
+        <div class="mindset-grid">
+            <article class="mindset-card reveal">
+                <div class="mindset-number">01 / CURIOSITY</div>
+                <h3>Take the system apart</h3>
+                <p>I like tracing APIs, data flows, and failure modes until I understand why something works, why it breaks, and which constraint actually matters. The task is finished only when the system makes sense.</p>
+            </article>
+            <article class="mindset-card reveal rd1">
+                <div class="mindset-number">02 / OWNERSHIP</div>
+                <h3>Build beyond the happy path</h3>
+                <p>I follow a problem through requirements, data, architecture, evaluation, deployment, and real-world edge cases. I test, break, rebuild, and document until the result is useful and dependable.</p>
+            </article>
+            <article class="mindset-card reveal rd2">
+                <div class="mindset-number">03 / FOUNDER RANGE</div>
+                <h3>Wear the hat the problem needs</h3>
+                <p>Working toward my own startup has pushed me across engineering, product, marketing, sales, outreach, and distribution. It helps me connect technical decisions to customer value and adoption.</p>
+            </article>
+            <article class="mindset-card reveal rd3">
+                <div class="mindset-number">04 / AMBITION</div>
+                <h3>Turn learning into momentum</h3>
+                <p>I am energized by difficult systems, fast feedback, and measurable progress. I learn new domains quickly, communicate across functions, and keep raising the standard once the first version works.</p>
+            </article>
         </div>
     </section>
 

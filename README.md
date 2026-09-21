@@ -15,6 +15,8 @@ machine-learning research, applied AI, and end-to-end product work.
   research, SaaS, healthcare, video, marketplace, and client projects
 - Technical strengths across Python, TypeScript, LLM applications, data
   systems, and cloud deployment
+- A builder-mindset section covering technical curiosity, ownership,
+  cross-functional startup experience, and ambition
 - Direct contact links for Data Science, Applied AI, and AI/ML engineering roles
 
 ## Implementation
